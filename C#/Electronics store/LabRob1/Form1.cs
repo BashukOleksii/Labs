@@ -24,6 +24,7 @@ namespace LabRob1
         CheckBox[] chk;
         Control[] textBoxes;
 
+        bool needHide = false; 
         public Form1()
         {
             InitializeComponent();
@@ -108,16 +109,16 @@ namespace LabRob1
             return false;
         }
 
-        private void AddToTable(Appliances a)
+        private void AddToTable(DataTable t, Appliances a)
         {
-            dt.Rows.Add(a.Id, a.Name, a.Brand, a.Price, a.Year, a.EnergyClass, a.Power, a.EnergyCost);
+            t.Rows.Add(a.Id, a.Name, a.Brand, a.Price, a.Year, a.EnergyClass, a.Power, a.EnergyCost);
         }
 
         private void UpdateDataGridView()
         {
             dt.Clear();
             foreach (Appliances a in list)
-                AddToTable(a);
+                AddToTable(dt,a);
 
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = dt;
@@ -223,7 +224,7 @@ namespace LabRob1
         {
             int index = e.RowIndex;
 
-            if (index >= list.Count)
+            if (index >= list.Count || index <0)
                 return;
 
             textBox13.Text = list[index].Id;
@@ -262,18 +263,32 @@ namespace LabRob1
 
             if (text == "Пошук")
             {
-                dataGridView2.Visible = true;
-                label39.Visible = true;
-                dataGridView1.Height = 230;
+                smallSize();
             }
             else
             {
-                dataGridView1.Height = 470;
-                dataGridView2.Visible = false;
-                label39.Visible = false;
+                bigSize();
             }
 
+            toolStripButton11.Visible = false;
+
         }
+
+        // Розміри вікна
+
+        public void smallSize()
+        {
+            dataGridView2.Visible = true;
+            label39.Visible = true;
+            dataGridView1.Height = 230;
+        }
+        public void bigSize()
+        {
+            dataGridView1.Height = 470;
+            dataGridView2.Visible = false;
+            label39.Visible = false;
+        }
+
 
         // Пошук
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -362,7 +377,7 @@ namespace LabRob1
                 int index = row.Index;
 
                 if (index >= list.Count)
-                    return;
+                    continue;
 
                 if(mul >= 0)
                     list[index] *= mul;
@@ -380,7 +395,55 @@ namespace LabRob1
 
         }
 
-      
+        private void toolStripButton9_Click(object sender, EventArgs e)
+        {
+            dt1.Clear();
+            List <Appliances> find = new List<Appliances>();
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            smallSize();
+            toolStripButton11.Visible = true;
+
+            foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int index = row.Index;
+
+                if (index >= list.Count) 
+                    continue;
+
+                find.Add(list[index]);
+            }
+
+            deleteFromList(find);
+
+            foreach(Appliances a in list)
+                foreach(Appliances b in find)
+                    if (a == b)
+                        AddToTable(dt1, a);
+
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = dt1;
+        }
+
+        private void deleteFromList(List <Appliances> l)
+        {
+            for(int i = 0; i < l.Count - 1; i++)
+                for (int j = i +1; j  < l.Count; j++)
+                    if (l[i] == l[j])
+                    {
+                        l.RemoveAt(j);
+                        j--;
+                    }
+                
+        }
+
+
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+            bigSize();
+            toolStripButton11.Visible = false;
+        }
     }
 
 }

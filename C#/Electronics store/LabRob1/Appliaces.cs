@@ -95,7 +95,7 @@ namespace LabRob1
         {
             return new Appliances(a) { Price = a.Price * num };
         }
-
+        
         public static Appliances operator /(Appliances a, double num)
         {
             return new Appliances(a) { Price = a.Price / num };
@@ -129,9 +129,9 @@ namespace LabRob1
         {
             return a.Price;
         }
-
+        
         // Перевантаження операторів порівняння:
-        //      Щоб знаходти об'єкти із максимальною ціною (>,<)
+        //      Щоб знаходти об'єкти із максимальною ціною (>,<) - Додати кнопку та опис кнопки
         //      Щоб знаходити всі товари із ціною вираного товару (==, !=)
         public static bool operator >(Appliances a1, Appliances a2)
         {

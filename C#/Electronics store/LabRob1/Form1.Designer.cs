@@ -177,6 +177,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label39 = new System.Windows.Forms.Label();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1693,7 +1695,9 @@
             this.toolStripSeparator3,
             this.toolStripButton9,
             this.toolStripSeparator4,
-            this.toolStripButton10});
+            this.toolStripButton10,
+            this.toolStripSeparator5,
+            this.toolStripButton11});
             this.toolStrip7.Location = new System.Drawing.Point(3, 3);
             this.toolStrip7.Name = "toolStrip7";
             this.toolStrip7.Size = new System.Drawing.Size(403, 25);
@@ -1724,6 +1728,7 @@
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(50, 22);
             this.toolStripButton9.Text = "Пошук";
+            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             this.toolStripButton9.MouseHover += new System.EventHandler(this.toolStripButton9_MouseHover);
             // 
             // toolStripSeparator4
@@ -1787,6 +1792,21 @@
             this.label39.TabIndex = 36;
             this.label39.Text = "Знайдені результати";
             this.label39.Visible = false;
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton11
+            // 
+            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton11.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton11.Image")));
+            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton11.Name = "toolStripButton11";
+            this.toolStripButton11.Size = new System.Drawing.Size(56, 22);
+            this.toolStripButton11.Text = "Сховати";
+            this.toolStripButton11.Click += new System.EventHandler(this.toolStripButton11_Click);
             // 
             // Form1
             // 
@@ -1987,6 +2007,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton toolStripButton10;
         private System.Windows.Forms.TextBox textBox30;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButton11;
     }
 }
 
