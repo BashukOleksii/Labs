@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -74,10 +75,11 @@ namespace LabRob1
 
         private void textBox11_KeyPress(object sender, KeyPressEventArgs e)
         {
+            TextBox textBox = sender as TextBox;
             if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
                 return;
 
-            if (e.KeyChar == ',' && !textBox11.Text.Contains(',') && textBox11.SelectionStart != 0)
+            if (e.KeyChar == ',' && !textBox.Text.Contains(',') && textBox.SelectionStart != 0)
                 return;
 
             e.Handled = true;
@@ -338,6 +340,47 @@ namespace LabRob1
             textBox30.Clear();
             textBox30.Text = "Кнопка \"Перевірка\"" + Environment.NewLine + "Виберіть рядок таблиці," + Environment.NewLine + "Натисніть на кнопку," + Environment.NewLine + "В результаті ви маєте отримати повідомлення про те чи товар поточного року випуску." + Environment.NewLine + "(Можна виділити декілька об'єктів, тобі вам потрібно буде вибрати перевірку чи всі об'єкти поточного року, чи хоча б один із вибраного).";
         }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            double add = -1, div = -1, sub = -1, mul = -1;
+
+            if (!IsEmpty(textBox26))
+                add = double.Parse(textBox26.Text);
+            if (!IsEmpty(textBox27))
+                sub = double.Parse(textBox27.Text);
+            if(!IsEmpty(textBox28))
+                mul = double.Parse(textBox28.Text);
+            if(!IsEmpty(textBox29))
+                div = double.Parse(textBox29.Text);
+
+            foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                int index = row.Index;
+
+                if (index >= list.Count)
+                    return;
+
+                if(mul >= 0)
+                    list[index] *= mul;
+                if(div > 0)
+                    list[index] /= div;
+                if(add > 0)
+                    list[index] += add;
+                if(sub > 0 && sub <= list[index].Price)
+                    list[index] -= sub;
+               
+            }
+
+            UpdateDataGridView();
+
+
+        }
+
+      
     }
 
 }

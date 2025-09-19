@@ -1636,6 +1636,7 @@
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new System.Drawing.Size(344, 26);
             this.textBox29.TabIndex = 23;
+            this.textBox29.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
             // 
             // textBox28
             // 
@@ -1644,6 +1645,7 @@
             this.textBox28.Name = "textBox28";
             this.textBox28.Size = new System.Drawing.Size(344, 26);
             this.textBox28.TabIndex = 22;
+            this.textBox28.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
             // 
             // textBox27
             // 
@@ -1652,6 +1654,7 @@
             this.textBox27.Name = "textBox27";
             this.textBox27.Size = new System.Drawing.Size(344, 26);
             this.textBox27.TabIndex = 21;
+            this.textBox27.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
             // 
             // label43
             // 
@@ -1705,6 +1708,7 @@
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(86, 22);
             this.toolStripButton8.Text = "Арифметичні";
+            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             this.toolStripButton8.MouseHover += new System.EventHandler(this.toolStripButton8_MouseHover);
             // 
             // toolStripSeparator3
