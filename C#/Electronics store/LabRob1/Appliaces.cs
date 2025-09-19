@@ -1,13 +1,14 @@
 ﻿using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LabRob1
 {
-    public class Appliaces
+    public class Appliances
     {
         static int id = 1;
         public string Id { get; private set; }
@@ -21,9 +22,9 @@ namespace LabRob1
         public short Power { get; set; }
         public double EnergyCost { get; private set; }
 
-        public Appliaces(): this(id.ToString(),"Ім'я " + id, "Бренд " + id, 0, 0, "No",0) { }
+        public Appliances(): this(id.ToString(),"Ім'я " + id, "Бренд " + id, 0, 0, "No",0) { }
 
-        public Appliaces(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power)
+        public Appliances(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power)
         {
             this.Id = Id;
             this.Name = Name;
@@ -63,5 +64,12 @@ namespace LabRob1
             }
         }
     
+
+        // Оператори:
+
+        public static Appliances operator+(Appliances a,int num)
+        {
+
+        }
     }
 }

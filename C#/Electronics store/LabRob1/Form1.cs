@@ -17,7 +17,7 @@ namespace LabRob1
         DataTable dt = new DataTable();
         DataTable dt1;
 
-        List<Appliaces> list;
+        List<Appliances> list;
         string filter = "Binary file (*.BIN)|*.BIN";
 
         CheckBox[] chk;
@@ -121,6 +121,7 @@ namespace LabRob1
             dataGridView1.DataSource = dt;
         }
 
+        // Знижка
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
@@ -250,6 +251,7 @@ namespace LabRob1
             UpdateDataGridView();
         }
 
+        // Поява/зникнення другої таблиці
         private void tabControl2_TabIndexChanged(object sender, EventArgs e)
         {
             TabControl tabControl = (TabControl)sender;
@@ -271,6 +273,7 @@ namespace LabRob1
 
         }
 
+        // Пошук
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             bool any = false;
@@ -312,10 +315,12 @@ namespace LabRob1
 
         }
 
+        // Конструктор зазамовчуванням
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             list.Add(new Appliaces());
         }
+
     }
 
 }

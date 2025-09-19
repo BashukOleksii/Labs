@@ -152,14 +152,15 @@
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label39 = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1525,6 +1526,21 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(154, 22);
+            this.toolStripButton7.Text = "Додати за замовчуванням";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton6
             // 
             this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -1542,6 +1558,7 @@
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Location = new System.Drawing.Point(12, 27);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -1577,20 +1594,15 @@
             this.label39.Text = "Знайдені результати";
             this.label39.Visible = false;
             // 
-            // toolStripSeparator2
+            // tabPage7
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(154, 22);
-            this.toolStripButton7.Text = "Додати за замовчуванням";
-            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(409, 447);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Операції";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1768,6 +1780,7 @@
         private System.Windows.Forms.CheckBox checkBox10;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.TabPage tabPage7;
     }
 }
 
