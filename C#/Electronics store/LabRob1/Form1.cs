@@ -41,7 +41,7 @@ namespace LabRob1
 
             dataGridView1.DataSource = dt;
 
-            list = new List<Appliaces>();
+            list = new List<Appliances>();
 
             saveFileDialog1.Filter = filter;
             saveFileDialog1.Title = "Збереження в бінарний файл";
@@ -60,7 +60,7 @@ namespace LabRob1
             if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(textBox9) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23) || IsEmpty(comboBox11))
                 return;
 
-            list.Add(new Appliaces(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text)));
+            list.Add(new Appliances(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text)));
 
         }
 
@@ -106,7 +106,7 @@ namespace LabRob1
             return false;
         }
 
-        private void AddToTable(Appliaces a)
+        private void AddToTable(Appliances a)
         {
             dt.Rows.Add(a.Id, a.Name, a.Brand, a.Price, a.Year, a.EnergyClass, a.Power, a.EnergyCost);
         }
@@ -114,7 +114,7 @@ namespace LabRob1
         private void UpdateDataGridView()
         {
             dt.Clear();
-            foreach (Appliaces a in list)
+            foreach (Appliances a in list)
                 AddToTable(a);
 
             dataGridView1.DataSource = null;
@@ -158,7 +158,7 @@ namespace LabRob1
                     using (FileStream fs = new FileStream(path, FileMode.Create))
                     using (BinaryWriter br = new BinaryWriter(fs))
                     {
-                        foreach (Appliaces a in list)
+                        foreach (Appliances a in list)
                         {
                             br.Write(a.Id);
                             br.Write(a.Name);
@@ -198,7 +198,7 @@ namespace LabRob1
                             short power = br.ReadInt16();
 
 
-                            list.Add(new Appliaces(id, name, brand, price, year, type, power));
+                            list.Add(new Appliances(id, name, brand, price, year, type, power));
 
                         }
                     }
@@ -235,7 +235,7 @@ namespace LabRob1
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            List<Appliaces> delete = new List<Appliaces>();
+            List<Appliances> delete = new List<Appliances>();
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             { 
                 int index = row.Index;
@@ -244,7 +244,7 @@ namespace LabRob1
                         delete.Add(list[index]);
             }
 
-            foreach (Appliaces a in delete)
+            foreach (Appliances a in delete)
                 list.Remove(a);
 
             Clear(textBox18, textBox17, textBox16, textBox15, textBox14, textBox13, comboBox12);
@@ -318,9 +318,26 @@ namespace LabRob1
         // Конструктор зазамовчуванням
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-            list.Add(new Appliaces());
+            list.Add(new Appliances());
         }
 
+        private void toolStripButton8_MouseHover(object sender, EventArgs e)
+        {
+            textBox30.Clear();
+            textBox30.Text = "Кнопка \"Арифметичні\"" + Environment.NewLine + "Виберіть рядок/рядки таблиці," + Environment.NewLine + "Введіть число в поле та натисніть кнопку для виконання дії позначеної зліва від полів," + Environment.NewLine + "Можна використовувати декілька полів та виконати арифметичні операції.";
+        }
+
+        private void toolStripButton9_MouseHover(object sender, EventArgs e)
+        {
+            textBox30.Clear();
+            textBox30.Text = "Кнопка \"Пошук\"" + Environment.NewLine + "Виберіть рядок таблиці" + Environment.NewLine + "Натисніть кнопку," + Environment.NewLine + "Вам буде показано список всіх товарів із ціною вибраного," + Environment.NewLine + "(Якщо вирати декілька рядків, то будуть виведені товари, які входять в перелік цін вибраних товарів)";
+        }
+
+        private void toolStripButton10_MouseHover(object sender, EventArgs e)
+        {
+            textBox30.Clear();
+            textBox30.Text = "Кнопка \"Перевірка\"" + Environment.NewLine + "Виберіть рядок таблиці," + Environment.NewLine + "Натисніть на кнопку," + Environment.NewLine + "В результаті ви маєте отримати повідомлення про те чи товар поточного року випуску." + Environment.NewLine + "(Можна виділити декілька об'єктів, тобі вам потрібно буде вибрати перевірку чи всі об'єкти поточного року, чи хоча б один із вибраного).";
+        }
     }
 
 }

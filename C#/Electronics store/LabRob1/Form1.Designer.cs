@@ -156,11 +156,27 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox30 = new System.Windows.Forms.TextBox();
+            this.textBox29 = new System.Windows.Forms.TextBox();
+            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.toolStrip7 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.label40 = new System.Windows.Forms.Label();
+            this.textBox26 = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label39 = new System.Windows.Forms.Label();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -175,6 +191,9 @@
             this.tabPage4.SuspendLayout();
             this.toolStrip5.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.toolStrip7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1566,6 +1585,177 @@
             this.tabControl2.TabIndex = 4;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_TabIndexChanged);
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.groupBox1);
+            this.tabPage7.Controls.Add(this.textBox29);
+            this.tabPage7.Controls.Add(this.textBox28);
+            this.tabPage7.Controls.Add(this.textBox27);
+            this.tabPage7.Controls.Add(this.label43);
+            this.tabPage7.Controls.Add(this.label42);
+            this.tabPage7.Controls.Add(this.label41);
+            this.tabPage7.Controls.Add(this.toolStrip7);
+            this.tabPage7.Controls.Add(this.label40);
+            this.tabPage7.Controls.Add(this.textBox26);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(409, 447);
+            this.tabPage7.TabIndex = 3;
+            this.tabPage7.Text = "Операції";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBox30);
+            this.groupBox1.Location = new System.Drawing.Point(19, 213);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(364, 228);
+            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Визначення кноки";
+            // 
+            // textBox30
+            // 
+            this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox30.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox30.Location = new System.Drawing.Point(6, 19);
+            this.textBox30.Multiline = true;
+            this.textBox30.Name = "textBox30";
+            this.textBox30.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox30.Size = new System.Drawing.Size(352, 203);
+            this.textBox30.TabIndex = 0;
+            this.textBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox30.WordWrap = false;
+            this.textBox30.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox11_KeyPress);
+            // 
+            // textBox29
+            // 
+            this.textBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox29.Location = new System.Drawing.Point(39, 181);
+            this.textBox29.Name = "textBox29";
+            this.textBox29.Size = new System.Drawing.Size(344, 26);
+            this.textBox29.TabIndex = 23;
+            // 
+            // textBox28
+            // 
+            this.textBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox28.Location = new System.Drawing.Point(39, 135);
+            this.textBox28.Name = "textBox28";
+            this.textBox28.Size = new System.Drawing.Size(344, 26);
+            this.textBox28.TabIndex = 22;
+            // 
+            // textBox27
+            // 
+            this.textBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox27.Location = new System.Drawing.Point(39, 85);
+            this.textBox27.Name = "textBox27";
+            this.textBox27.Size = new System.Drawing.Size(344, 26);
+            this.textBox27.TabIndex = 21;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label43.Location = new System.Drawing.Point(18, 141);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(15, 20);
+            this.label43.TabIndex = 20;
+            this.label43.Text = "*";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label42.Location = new System.Drawing.Point(20, 186);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(13, 20);
+            this.label42.TabIndex = 19;
+            this.label42.Text = "/";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label41.Location = new System.Drawing.Point(17, 88);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(14, 20);
+            this.label41.TabIndex = 18;
+            this.label41.Text = "-";
+            // 
+            // toolStrip7
+            // 
+            this.toolStrip7.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton8,
+            this.toolStripSeparator3,
+            this.toolStripButton9,
+            this.toolStripSeparator4,
+            this.toolStripButton10});
+            this.toolStrip7.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip7.Name = "toolStrip7";
+            this.toolStrip7.Size = new System.Drawing.Size(403, 25);
+            this.toolStrip7.TabIndex = 17;
+            this.toolStrip7.Text = "toolStrip7";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(86, 22);
+            this.toolStripButton8.Text = "Арифметичні";
+            this.toolStripButton8.MouseHover += new System.EventHandler(this.toolStripButton8_MouseHover);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(50, 22);
+            this.toolStripButton9.Text = "Пошук";
+            this.toolStripButton9.MouseHover += new System.EventHandler(this.toolStripButton9_MouseHover);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton10.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton10.Image")));
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(67, 22);
+            this.toolStripButton10.Text = "Перевірка";
+            this.toolStripButton10.MouseHover += new System.EventHandler(this.toolStripButton10_MouseHover);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label40.Location = new System.Drawing.Point(15, 41);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(18, 20);
+            this.label40.TabIndex = 16;
+            this.label40.Text = "+";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox26.Location = new System.Drawing.Point(39, 38);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.Size = new System.Drawing.Size(344, 26);
+            this.textBox26.TabIndex = 8;
+            this.textBox26.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -1593,16 +1783,6 @@
             this.label39.TabIndex = 36;
             this.label39.Text = "Знайдені результати";
             this.label39.Visible = false;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(409, 447);
-            this.tabPage7.TabIndex = 3;
-            this.tabPage7.Text = "Операції";
-            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1642,6 +1822,12 @@
             this.toolStrip5.ResumeLayout(false);
             this.toolStrip5.PerformLayout();
             this.tabControl2.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.toolStrip7.ResumeLayout(false);
+            this.toolStrip7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1781,6 +1967,22 @@
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TextBox textBox26;
+        private System.Windows.Forms.TextBox textBox29;
+        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ToolStrip toolStrip7;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton toolStripButton10;
+        private System.Windows.Forms.TextBox textBox30;
     }
 }
 
