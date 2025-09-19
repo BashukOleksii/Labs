@@ -76,6 +76,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MessageBoxMy";
             this.Text = "MessageBoxMy";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MessageBoxMy_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace LabRob1
 {
@@ -114,11 +115,11 @@ namespace LabRob1
             t.Rows.Add(a.Id, a.Name, a.Brand, a.Price, a.Year, a.EnergyClass, a.Power, a.EnergyCost);
         }
 
-        private void UpdateDataGridView()
+        private void UpdateDataGridView1()
         {
             dt.Clear();
-            foreach (Appliances a in list)
-                AddToTable(dt,a);
+              foreach (Appliances a in list)
+                     AddToTable(dt,a);
 
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = dt;
@@ -131,12 +132,12 @@ namespace LabRob1
                 if (row.Index < list.Count)
                     list[row.Index].Discount();
 
-            UpdateDataGridView();
+            UpdateDataGridView1();
         }
 
         private void вивестиМасивToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateDataGridView();
+            UpdateDataGridView1();
         }
 
         private void Clear(params Control[] controls)
@@ -209,7 +210,7 @@ namespace LabRob1
                 }
                 catch { MessageBox.Show("Помилка читання файлу.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
 
-                UpdateDataGridView();
+                UpdateDataGridView1();
             }
         }
 
@@ -251,7 +252,7 @@ namespace LabRob1
                 list.Remove(a);
 
             Clear(textBox18, textBox17, textBox16, textBox15, textBox14, textBox13, comboBox12);
-            UpdateDataGridView();
+            UpdateDataGridView1();
         }
 
         // Поява/зникнення другої таблиці
@@ -390,7 +391,7 @@ namespace LabRob1
                
             }
 
-            UpdateDataGridView();
+            UpdateDataGridView1();
 
 
         }
@@ -422,8 +423,8 @@ namespace LabRob1
                     if (a == b)
                         AddToTable(dt1, a);
 
-            dataGridView2.DataSource = null;
-            dataGridView2.DataSource = dt1;
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = dt1;
         }
 
         private void deleteFromList(List <Appliances> l)
@@ -443,6 +444,76 @@ namespace LabRob1
         {
             bigSize();
             toolStripButton11.Visible = false;
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            int count = dataGridView1.SelectedRows.Count;
+
+            if (count == 0)
+                return;
+
+            int index = dataGridView1.SelectedRows[0].Index;
+            if (count == 1 && index < list.Count && index >= 0) 
+                if (list[index])
+                    MessageBox.Show("Вибраний товар поточного року випуску.", "Порівняння", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    MessageBox.Show("Вибраний товар не поточного року випуску.", "Порівняння", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                MessageBoxMy messageBoxMy = new MessageBoxMy();
+                DialogResult dr = messageBoxMy.ShowDialog();
+
+                if (dr != DialogResult.Cancel)
+                {
+                    dt1.Clear();
+                    smallSize();
+                    toolStripButton11.Visible = true;
+
+                    bool o = false, a = true;
+
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        int rIndex = row.Index;
+
+                        if (rIndex >= list.Count)
+                            continue;
+
+                        Appliances appliances = list[rIndex];
+
+                        if (appliances)
+                        {
+                            AddToTable(dt1, appliances);
+                            o = true;
+                        }
+                        else
+                            a = false;
+                        
+                    }
+
+                    dataGridView2.DataSource = null;
+                    dataGridView2.DataSource = dt1;
+
+                    if(dr == DialogResult.OK && dt1.Rows.Count > 0)
+                    {
+                        if (a)
+                            MessageBox.Show("Всі елемент випущені поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Не всі елемент випущені поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if(dr == DialogResult.Yes)
+                    {
+                        if(o)
+                            MessageBox.Show("Хоча б один елемент випущений поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Ні одного елементу немає поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                        MessageBox.Show("Ні одного елементу немає поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+
         }
     }
 

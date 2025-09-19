@@ -12,6 +12,7 @@ namespace LabRob1
 {
     public partial class MessageBoxMy : Form
     {
+        bool all = false, one = false;
         public MessageBoxMy()
         {
             InitializeComponent();
@@ -19,12 +20,24 @@ namespace LabRob1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult= DialogResult.OK;
+            all = true;
+            this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Yes;
+            one = true;
+            this.Close();
+        }
+
+        private void MessageBoxMy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(all)
+                DialogResult = DialogResult.OK;
+            else if(one)
+                DialogResult= DialogResult.Yes;
+            else
+                DialogResult = DialogResult.Cancel;
         }
     }
 }

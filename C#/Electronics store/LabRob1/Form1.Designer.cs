@@ -1744,6 +1744,7 @@
             this.toolStripButton10.Name = "toolStripButton10";
             this.toolStripButton10.Size = new System.Drawing.Size(67, 22);
             this.toolStripButton10.Text = "Перевірка";
+            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
             this.toolStripButton10.MouseHover += new System.EventHandler(this.toolStripButton10_MouseHover);
             // 
             // label40
