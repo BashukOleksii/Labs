@@ -113,16 +113,28 @@ namespace LabRob1
             int now = DateTime.Now.Year;
             return a.Year != now;
         }
-        public static bool operator &(Appliances a1, Appliances a2)
+        public static Appliances operator &(Appliances a1, Appliances a2)
         {
             int now = DateTime.Now.Year;
-            return (a1.Year == now) && (a2.Year == now);
+            if((a1.Year == now) && (a2.Year == now))
+                return a1;
+            return new Appliances();
         }
-        public static bool operator |(Appliances a1, Appliances a2)
+
+        public static Appliances operator |(Appliances a1, Appliances a2)
         {
             int now = DateTime.Now.Year;
-            return (a1.Year == now) || (now == a2.Year);
+            if (a1.Year == now)
+                return a1;
+            if (now == a2.Year)
+                return a2;
+            return new Appliances();
         }
+        public static bool operator!(Appliances a)
+        {
+            return a.Year != DateTime.Now.Year;
+        }
+
 
         // Переведенн типів, для того, щоб отримувати ціну Товару
         public static implicit operator double(Appliances a)
@@ -130,6 +142,7 @@ namespace LabRob1
             return a.Price;
         }
         
+
         // Перевантаження операторів порівняння:
         //      Щоб знаходти об'єкти із максимальною ціною (>,<) - Додати кнопку та опис кнопки
         //      Щоб знаходити всі товари із ціною вираного товару (==, !=)

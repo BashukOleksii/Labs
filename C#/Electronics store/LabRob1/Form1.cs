@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,6 @@ namespace LabRob1
         CheckBox[] chk;
         Control[] textBoxes;
 
-        bool needHide = false; 
         public Form1()
         {
             InitializeComponent();
@@ -55,6 +55,10 @@ namespace LabRob1
             chk = new CheckBox[] { checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15 };
             textBoxes = new Control[] { textBox19, textBox25, textBox24, textBox22, textBox21, comboBox13, textBox20 };
         }
+
+
+
+
 
 
         // Створення
@@ -262,6 +266,12 @@ namespace LabRob1
             UpdateDataGridView1();
         }
 
+
+
+
+
+
+
         // Поява/зникнення другої таблиці
         private void tabControl2_TabIndexChanged(object sender, EventArgs e)
         {
@@ -384,6 +394,13 @@ namespace LabRob1
         {
             textBox30.Text = "Кнопка \"Сховати\"" + Environment.NewLine + "При відображенні таблиці з результатами може виникнути потреба приховати її," + Environment.NewLine + "Якщо в вас з'явилась така потреба, можна натиснути на цю кнопку.";
         }
+        private void toolStripButton12_MouseHover(object sender, EventArgs e)
+        {
+            textBox30.Text = "Кнопка \"Найдорожчі\"" + Environment.NewLine + "Вам необхідно виділити рядки, які вас цікавлять," + Environment.NewLine + "потім натиснути кноку і ви отримаєте список товарів із нійбільшою ціною.";
+        }
+
+
+
 
 
         // Арфметичні операції
@@ -483,6 +500,8 @@ namespace LabRob1
             toolStripButton11.Visible = false;
         }
 
+        // Виправити цикл, бо коли вибирати останійелемент (пустий) і передонстанній, то результат не правильний
+
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             int count = dataGridView1.SelectedRows.Count;
@@ -507,40 +526,42 @@ namespace LabRob1
                     smallSize();
                     toolStripButton11.Visible = true;
 
-                    bool o = false, a = true;
+                    bool one = false, all = true;
 
-                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    for (int i = 0; i < dataGridView1.SelectedRows.Count; i++) 
                     {
-                        int rIndex = row.Index;
-
-                        if (rIndex >= list.Count)
+                        int indexRow = dataGridView1.SelectedRows[i].Index;
+                        if (indexRow >= list.Count)
                             continue;
 
-                        Appliances appliances = list[rIndex];
+                        if (list[indexRow])
+                            AddToTable(dt1, list[indexRow]);
 
-                        if (appliances)
+                        if (i < dataGridView1.SelectedRows.Count - 1)
                         {
-                            AddToTable(dt1, appliances);
-                            o = true;
+                            if (list[i] || list[i + 1])
+                                one = true;
+
+                            if (!(list[i] && list[i + 1]))
+                                all = false;
                         }
-                        else
-                            a = false;
-                        
+
                     }
 
                     dataGridView2.DataSource = null;
                     dataGridView2.DataSource = dt1;
 
-                    if(dr == DialogResult.OK && dt1.Rows.Count > 0)
+
+                    if (dr == DialogResult.OK && dt1.Rows.Count > 0)
                     {
-                        if (a)
+                        if (all)
                             MessageBox.Show("Всі елемент випущені поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
                             MessageBox.Show("Не всі елемент випущені поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else if(dr == DialogResult.Yes)
+                    else if (dr == DialogResult.Yes)
                     {
-                        if(o)
+                        if (one)
                             MessageBox.Show("Хоча б один елемент випущений поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         else
                             MessageBox.Show("Ні одного елементу немає поточного року", "Поівдомлення", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -559,7 +580,7 @@ namespace LabRob1
 
 
 
-
+        // Пошук максимального значення.
         private void toolStripButton12_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -608,10 +629,8 @@ namespace LabRob1
 
         }
 
-        private void toolStripButton12_MouseHover(object sender, EventArgs e)
-        {
-            textBox30.Text = "Кнопка \"Найдорожчі\"" + Environment.NewLine + "Вам необхідно виділити рядки, які вас цікавлять," + Environment.NewLine + "потім натиснути кноку і ви отримаєте список товарів із нійбільшою ціною.";
-        }
+
+
     }
 
 }
