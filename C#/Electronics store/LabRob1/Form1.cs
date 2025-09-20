@@ -125,6 +125,13 @@ namespace LabRob1
             dataGridView1.DataSource = dt;
         }
 
+
+
+
+
+
+
+
         // Знижка
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
@@ -275,6 +282,10 @@ namespace LabRob1
 
         }
 
+
+
+
+
         // Розміри вікна
 
         public void smallSize()
@@ -289,6 +300,11 @@ namespace LabRob1
             dataGridView2.Visible = false;
             label39.Visible = false;
         }
+
+
+
+
+
 
 
         // Пошук
@@ -333,12 +349,19 @@ namespace LabRob1
 
         }
 
+
+
+
         // Конструктор зазамовчуванням
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
             list.Add(new Appliances());
         }
 
+
+
+
+        // Текстове повідомлення
         private void toolStripButton8_MouseHover(object sender, EventArgs e)
         {
             textBox30.Clear();
@@ -357,6 +380,13 @@ namespace LabRob1
             textBox30.Text = "Кнопка \"Перевірка\"" + Environment.NewLine + "Виберіть рядок таблиці," + Environment.NewLine + "Натисніть на кнопку," + Environment.NewLine + "В результаті ви маєте отримати повідомлення про те чи товар поточного року випуску." + Environment.NewLine + "(Можна виділити декілька об'єктів, тобі вам потрібно буде вибрати перевірку чи всі об'єкти поточного року, чи хоча б один із вибраного).";
         }
 
+        private void toolStripButton11_MouseHover(object sender, EventArgs e)
+        {
+            textBox30.Text = "Кнопка \"Сховати\"" + Environment.NewLine + "При відображенні таблиці з результатами може виникнути потреба приховати її," + Environment.NewLine + "Якщо в вас з'явилась така потреба, можна натиснути на цю кнопку.";
+        }
+
+
+        // Арфметичні операції
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count == 0)
@@ -396,6 +426,10 @@ namespace LabRob1
 
         }
 
+
+
+
+       // Однакової ціни
         private void toolStripButton9_Click(object sender, EventArgs e)
         {
             dt1.Clear();
@@ -423,8 +457,8 @@ namespace LabRob1
                     if (a == b)
                         AddToTable(dt1, a);
 
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = dt1;
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = dt1;
         }
 
         private void deleteFromList(List <Appliances> l)
@@ -440,6 +474,9 @@ namespace LabRob1
         }
 
 
+
+
+        // Поточного року
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
             bigSize();
@@ -515,6 +552,63 @@ namespace LabRob1
 
 
         }
+
+     
+
+
+
+
+
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+
+            List<Appliances> appliances = new List<Appliances>();
+
+            foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                if(row.Index >= list.Count)
+                    continue;
+
+                appliances.Add(list[row.Index]);
+
+            }
+
+            Appliances a = Max(appliances);
+
+            dt1.Clear();
+
+            foreach(Appliances app in appliances)
+            {
+                if (app == a)
+                    AddToTable(dt1,app);
+            }
+
+            smallSize();
+            toolStripButton11.Visible = true;
+
+            dataGridView2.DataSource = null;
+            dataGridView2.DataSource = dt1;
+
+            
+        }
+
+        private Appliances Max(List<Appliances> appliances)
+        {
+            Appliances max = appliances[0];
+            
+            for(int i = 1; i < appliances.Count; i++)
+            {
+                if(max < appliances[i])
+                    max = appliances[i];
+            }
+
+            return max;
+
+        }
+
     }
 
 }

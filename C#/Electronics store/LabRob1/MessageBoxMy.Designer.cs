@@ -75,6 +75,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "MessageBoxMy";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MessageBoxMy";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MessageBoxMy_FormClosed);
             this.ResumeLayout(false);
