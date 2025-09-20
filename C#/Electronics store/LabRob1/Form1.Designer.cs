@@ -1823,6 +1823,7 @@
             this.toolStripButton12.Size = new System.Drawing.Size(79, 22);
             this.toolStripButton12.Text = "Найдорожчі";
             this.toolStripButton12.Click += new System.EventHandler(this.toolStripButton12_Click);
+            this.toolStripButton12.MouseHover += new System.EventHandler(this.toolStripButton12_MouseHover);
             // 
             // toolStripSeparator8
             // 

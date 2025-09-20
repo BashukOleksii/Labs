@@ -591,7 +591,6 @@ namespace LabRob1
 
             dataGridView2.DataSource = null;
             dataGridView2.DataSource = dt1;
-
             
         }
 
@@ -609,6 +608,10 @@ namespace LabRob1
 
         }
 
+        private void toolStripButton12_MouseHover(object sender, EventArgs e)
+        {
+            textBox30.Text = "Кнопка \"Найдорожчі\"" + Environment.NewLine + "Вам необхідно виділити рядки, які вас цікавлять," + Environment.NewLine + "потім натиснути кноку і ви отримаєте список товарів із нійбільшою ціною.";
+        }
     }
 
 }
