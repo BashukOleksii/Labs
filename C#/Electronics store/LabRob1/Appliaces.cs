@@ -141,7 +141,10 @@ namespace LabRob1
         {
             return a.Price;
         }
-        
+        public static implicit operator string(Appliances a)
+        {
+            return a.Name + " " + a.Brand;
+        }
 
         // Перевантаження операторів порівняння:
         //      Щоб знаходти об'єкти із максимальною ціною (>,<) - Додати кнопку та опис кнопки

@@ -236,7 +236,7 @@ namespace LabRob1
         {
             int index = e.RowIndex;
 
-            if (index >= list.Count || index <0)
+            if (index <0)
                 return;
 
             textBox13.Text = list[index].Id;
@@ -424,9 +424,6 @@ namespace LabRob1
             {
                 int index = row.Index;
 
-                if (index >= list.Count)
-                    continue;
-
                 if(mul >= 0)
                     list[index] *= mul;
                 if(div > 0)
@@ -499,6 +496,9 @@ namespace LabRob1
             bigSize();
             toolStripButton11.Visible = false;
         }
+
+
+
 
         // Виправити цикл, бо коли вибирати останійелемент (пустий) і передонстанній, то результат не правильний
 
@@ -589,13 +589,8 @@ namespace LabRob1
             List<Appliances> appliances = new List<Appliances>();
 
             foreach(DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                if(row.Index >= list.Count)
-                    continue;
-
                 appliances.Add(list[row.Index]);
 
-            }
 
             Appliances a = Max(appliances);
 
@@ -631,6 +626,37 @@ namespace LabRob1
 
 
 
+
+
+
+        // Виведення ціни.
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.ToUpper(e.KeyChar) == 'I')
+            {
+                DataGridView dataGridView = sender as DataGridView;
+
+                int count = dataGridView.SelectedRows.Count;
+
+                if (count == 0)
+                    return;
+
+                string all = "";
+                foreach (DataGridViewRow row in dataGridView.SelectedRows)
+                {
+                    int index = row.Index;
+
+                    double price = list[index];
+                    string name = list[index];
+
+                    all += name + " - " + price + "\n";
+                }
+
+                MessageBox.Show(all, "Інформація про вибрані товари", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+           
+        }
     }
 
 }

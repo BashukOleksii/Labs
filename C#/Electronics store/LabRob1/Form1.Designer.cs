@@ -917,6 +917,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(835, 470);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // tabPage6
             // 
@@ -1821,6 +1822,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(835, 216);
             this.dataGridView2.TabIndex = 5;
             this.dataGridView2.Visible = false;
+            this.dataGridView2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // label39
             // 
@@ -1843,9 +1845,11 @@
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Таблиця";
+            this.TopMost = true;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
