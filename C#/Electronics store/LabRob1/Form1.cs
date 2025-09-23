@@ -654,7 +654,29 @@ namespace LabRob1
 
                 MessageBox.Show(all, "Інформація про вибрані товари", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            if(char.ToUpper(e.KeyChar) == 'P' || char.ToUpper(e.KeyChar) == 'M')
+            {
 
+                foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    int index = row.Index;
+
+                    if(index < 0)
+                        continue;
+
+                    if (char.ToUpper(e.KeyChar) == 'P')
+                    {
+                        double p = list[index];
+                        if(p >= 0)
+                            list[index]++;
+                    }
+                    else
+                        list[index]--;
+                }
+
+                UpdateDataGridView1();
+
+            }
            
         }
     }

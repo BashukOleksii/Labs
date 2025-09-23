@@ -4,6 +4,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -166,6 +167,19 @@ namespace LabRob1
             return !(a1 == a2);
         }
 
+        // Унарні оператори
+
+        public static Appliances operator ++(Appliances a)
+        {
+            a.Price += 1000;
+            return a;
+        }
+
+        public static Appliances operator --(Appliances a)
+        {
+            a.Price -= 1000;
+            return a;
+        }
 
     }
 }
