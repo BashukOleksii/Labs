@@ -64,5 +64,12 @@ namespace LabRob1
             HasGril = reader.ReadString(); 
         }
 
+        public override void FillDataRow(DataRow row)
+        {
+            base.FillDataRow(row);
+            row["Діаметр тарілки"] = TableDiametr;
+            row["Наявність грилю"] = HasGril;
+        }
+
     }
 }

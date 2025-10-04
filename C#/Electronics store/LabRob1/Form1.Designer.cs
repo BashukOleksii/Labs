@@ -202,6 +202,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.Cleaner = new System.Windows.Forms.Panel();
+            this.comboBox20 = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.comboBox15 = new System.Windows.Forms.ComboBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -239,7 +240,6 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.comboBox20 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -2109,7 +2109,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.Cleaner);
             this.tabPage4.Controls.Add(this.mainAdd);
             this.tabPage4.Controls.Add(this.Microwave);
             this.tabPage4.Controls.Add(this.WashingMashine);
@@ -2128,11 +2127,25 @@
             this.Cleaner.Controls.Add(this.label46);
             this.Cleaner.Controls.Add(this.comboBox15);
             this.Cleaner.Controls.Add(this.label47);
-            this.Cleaner.Location = new System.Drawing.Point(0, 321);
+            this.Cleaner.Location = new System.Drawing.Point(469, 250);
             this.Cleaner.Name = "Cleaner";
             this.Cleaner.Size = new System.Drawing.Size(394, 120);
             this.Cleaner.TabIndex = 19;
             this.Cleaner.Visible = false;
+            // 
+            // comboBox20
+            // 
+            this.comboBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox20.Items.AddRange(new object[] {
+            "Класичний",
+            "Верикальний",
+            "Робот",
+            "Ручний"});
+            this.comboBox20.Location = new System.Drawing.Point(2, 30);
+            this.comboBox20.Name = "comboBox20";
+            this.comboBox20.Size = new System.Drawing.Size(388, 28);
+            this.comboBox20.TabIndex = 19;
+            this.comboBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox11_KeyPress);
             // 
             // label46
             // 
@@ -2512,25 +2525,12 @@
             this.tabControl2.TabIndex = 4;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_TabIndexChanged);
             // 
-            // comboBox20
-            // 
-            this.comboBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox20.Items.AddRange(new object[] {
-            "Класичний",
-            "Верикальний",
-            "Робот",
-            "Ручний"});
-            this.comboBox20.Location = new System.Drawing.Point(2, 30);
-            this.comboBox20.Name = "comboBox20";
-            this.comboBox20.Size = new System.Drawing.Size(388, 28);
-            this.comboBox20.TabIndex = 19;
-            this.comboBox20.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox11_KeyPress);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 509);
+            this.Controls.Add(this.Cleaner);
             this.Controls.Add(this.label39);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.tabControl2);

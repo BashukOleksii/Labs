@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -59,6 +60,13 @@ namespace LabRob1
             base.ReadFromFile(reader);
             SpinSpeed = reader.ReadInt16();
             MaxKgLoad = reader.ReadDouble();
+        }
+
+        public override void FillDataRow(DataRow row)
+        {
+            base.FillDataRow(row);
+            row["Обертів на хвилину"] = SpinSpeed;
+            row["Максимальна вага"] = MaxKgLoad;
         }
     }
 }

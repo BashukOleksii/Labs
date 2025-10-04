@@ -2,6 +2,7 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -202,6 +203,17 @@ public abstract Appliances Clone();
 
         }
 
+        public virtual void FillDataRow(DataRow row)
+        {
+            row["ID"] = Id;
+            row["Ім'я"] = Name;
+            row["Бренд"] = Brand;
+            row["Ціна"] = Price;
+            row["Рік випуску"] = Year;
+            row["Тип спожвання"] = EnergyClass;
+            row["Потужність"] = Power;
+            row["Витратність (на год.)"] = EnergyCost;
+        }
        
     }
 }

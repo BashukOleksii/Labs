@@ -94,7 +94,7 @@ namespace LabRob1
                  return;
             if(ind == 0)
             {
-                if (IsEmpty(textBox11) || IsEmpty(comboBox14))
+                if (IsEmpty(textBox31) || IsEmpty(comboBox14))
                     return;
                 list.Add(new Microwave(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text),double.Parse(textBox31.Text),comboBox14.Text));
             }
@@ -171,35 +171,9 @@ namespace LabRob1
 
         private void AddToTable(DataTable t, Appliances a)
         {
-            DataRow dRow = t.NewRow();
-
-            dRow["ID"] = a.Id;
-            dRow["Ім'я"] = a.Name;
-            dRow["Бренд"] = a.Brand;
-            dRow["Ціна"] = a.Price;
-            dRow["Рік випуску"] = a.Year;
-            dRow["Тип спожвання"] = a.EnergyClass;
-            dRow["Потужність"] = a.Power;
-            dRow["Витратність (на год.)"] = a.EnergyCost;
-
-            if (a is Microwave mv)
-            {
-                dRow["Діаметр тарілки"] = mv.TableDiametr;
-                dRow["Наявність грилю"] = mv.HasGril;
-            }
-            else if (a is WashingMashine wm)
-            {
-                dRow["Обертів на хвилину"] = wm.SpinSpeed;
-                dRow["Максимальна вага"] = wm.MaxKgLoad;
-            }
-            else if (a is Cleaner c)
-            {
-                dRow["Тип пилососу"] = c.Type;
-                dRow["Наявність щітки"] = c.HasBrush;
-            }
-
-            t.Rows.Add(dRow);
-
+           DataRow dRow = t.NewRow();
+           a.FillDataRow(dRow);
+           t.Rows.Add(dRow);
         }
 
         private void UpdateDataGridView1()

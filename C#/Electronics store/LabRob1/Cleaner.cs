@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -60,6 +61,13 @@ namespace LabRob1
             base.ReadFromFile(reader);
             Type = reader.ReadString();
             HasBrush = reader.ReadString();
+        }
+
+        public override void FillDataRow(DataRow row)
+        {
+            base.FillDataRow(row);
+            row["Тип пилососу"] = Type;
+            row["Наявність щітки"] = HasBrush;
         }
 
     }
