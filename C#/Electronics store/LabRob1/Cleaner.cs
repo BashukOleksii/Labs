@@ -70,5 +70,13 @@ namespace LabRob1
             row["Наявність щітки"] = HasBrush;
         }
 
+        public override void ImagesWhenDelete(Form1 form)
+        {
+            base.ImagesWhenDelete(form);
+            form.pCleaner.Visible = true;
+            form.textBox39.Text = Type;
+            form.comboBox18.Text = HasBrush.ToString();
+        }
+
     }
 }

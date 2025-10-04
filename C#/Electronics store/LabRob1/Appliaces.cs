@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -215,5 +216,18 @@ public abstract Appliances Clone();
             row["Витратність (на год.)"] = EnergyCost;
         }
        
+        public virtual void ImagesWhenDelete(Form1 form)
+        {
+            form.textBox13.Text = Id;
+            form.textBox18.Text = Name;
+            form.textBox17.Text = Brand;
+            form.textBox16.Text = Price.ToString();
+            form.textBox15.Text = Year.ToString();
+            form.comboBox12.Text = EnergyClass;
+            form. textBox14.Text = Power.ToString();
+            form.pCleaner.Visible = false;
+            form.pWashingMashine.Visible = false;
+            form.pMicrowave.Visible = false;
+        } 
     }
 }

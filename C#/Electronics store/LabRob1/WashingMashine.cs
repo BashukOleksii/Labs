@@ -68,5 +68,13 @@ namespace LabRob1
             row["Обертів на хвилину"] = SpinSpeed;
             row["Максимальна вага"] = MaxKgLoad;
         }
+
+        public override void ImagesWhenDelete(Form1 form)
+        {
+            base.ImagesWhenDelete(form);
+            form.pWashingMashine.Visible = true;
+            form.textBox42.Text = SpinSpeed.ToString();
+            form.textBox41.Text = MaxKgLoad.ToString();
+        }
     }
 }

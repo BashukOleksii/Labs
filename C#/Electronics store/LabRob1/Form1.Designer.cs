@@ -1805,7 +1805,7 @@
             this.pCleaner.Controls.Add(this.comboBox18);
             this.pCleaner.Controls.Add(this.textBox39);
             this.pCleaner.Controls.Add(this.label57);
-            this.pCleaner.Location = new System.Drawing.Point(4, 304);
+            this.pCleaner.Location = new System.Drawing.Point(7, 301);
             this.pCleaner.Name = "pCleaner";
             this.pCleaner.Size = new System.Drawing.Size(394, 120);
             this.pCleaner.TabIndex = 37;
@@ -1858,7 +1858,7 @@
             this.pWashingMashine.Controls.Add(this.label60);
             this.pWashingMashine.Controls.Add(this.textBox42);
             this.pWashingMashine.Controls.Add(this.label61);
-            this.pWashingMashine.Location = new System.Drawing.Point(1, 307);
+            this.pWashingMashine.Location = new System.Drawing.Point(5, 304);
             this.pWashingMashine.Name = "pWashingMashine";
             this.pWashingMashine.Size = new System.Drawing.Size(394, 120);
             this.pWashingMashine.TabIndex = 38;
@@ -2109,6 +2109,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.Cleaner);
             this.tabPage4.Controls.Add(this.mainAdd);
             this.tabPage4.Controls.Add(this.Microwave);
             this.tabPage4.Controls.Add(this.WashingMashine);
@@ -2127,7 +2128,7 @@
             this.Cleaner.Controls.Add(this.label46);
             this.Cleaner.Controls.Add(this.comboBox15);
             this.Cleaner.Controls.Add(this.label47);
-            this.Cleaner.Location = new System.Drawing.Point(469, 250);
+            this.Cleaner.Location = new System.Drawing.Point(0, 321);
             this.Cleaner.Name = "Cleaner";
             this.Cleaner.Size = new System.Drawing.Size(394, 120);
             this.Cleaner.TabIndex = 19;
@@ -2226,6 +2227,7 @@
             this.textBox23.Name = "textBox23";
             this.textBox23.Size = new System.Drawing.Size(199, 26);
             this.textBox23.TabIndex = 25;
+            this.textBox23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox23_KeyPress);
             // 
             // textBox12
             // 
@@ -2234,6 +2236,7 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(391, 26);
             this.textBox12.TabIndex = 23;
+            this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox23_KeyPress);
             // 
             // textBox11
             // 
@@ -2242,6 +2245,7 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(391, 26);
             this.textBox11.TabIndex = 21;
+            this.textBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
             // 
             // textBox9
             // 
@@ -2274,6 +2278,7 @@
             this.comboBox11.Name = "comboBox11";
             this.comboBox11.Size = new System.Drawing.Size(185, 28);
             this.comboBox11.TabIndex = 27;
+            this.comboBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox11_KeyPress);
             // 
             // label33
             // 
@@ -2530,7 +2535,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 509);
-            this.Controls.Add(this.Cleaner);
             this.Controls.Add(this.label39);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.tabControl2);
@@ -2695,12 +2699,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.ComboBox comboBox12;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
@@ -2791,27 +2789,33 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TextBox textBox33;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Panel pCleaner;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.ComboBox comboBox18;
-        private System.Windows.Forms.TextBox textBox39;
+        public System.Windows.Forms.ComboBox comboBox18;
+        public System.Windows.Forms.TextBox textBox39;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Panel pMicrowave;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.ComboBox comboBox19;
-        private System.Windows.Forms.TextBox textBox40;
+        public System.Windows.Forms.ComboBox comboBox19;
+        public System.Windows.Forms.TextBox textBox40;
         private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Panel pWashingMashine;
-        private System.Windows.Forms.TextBox textBox41;
+        public System.Windows.Forms.TextBox textBox41;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.TextBox textBox42;
+        public System.Windows.Forms.TextBox textBox42;
         private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.CheckBox checkBox22;
         private System.Windows.Forms.TextBox textBox43;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.ComboBox comboBox20;
+        public System.Windows.Forms.TextBox textBox13;
+        public System.Windows.Forms.TextBox textBox15;
+        public System.Windows.Forms.TextBox textBox16;
+        public System.Windows.Forms.TextBox textBox17;
+        public System.Windows.Forms.TextBox textBox18;
+        public System.Windows.Forms.ComboBox comboBox12;
+        public System.Windows.Forms.TextBox textBox14;
+        public System.Windows.Forms.Panel pCleaner;
+        public System.Windows.Forms.Panel pMicrowave;
+        public System.Windows.Forms.Panel pWashingMashine;
     }
 }
 

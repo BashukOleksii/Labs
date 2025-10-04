@@ -258,42 +258,9 @@ namespace LabRob1
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-
             if (index <0)
                 return;
-
-            textBox13.Text = list[index].Id;
-            textBox18.Text = list[index].Name;
-            textBox17.Text = list[index].Brand;
-            textBox16.Text = list[index].Price.ToString();
-            textBox15.Text = list[index].Year.ToString();
-            comboBox12.Text = list[index].EnergyClass;
-            textBox14.Text = list[index].Power.ToString();
-
-            if (list[index] is Microwave mv)
-            {
-                pCleaner.Visible = false;
-                pWashingMashine.Visible = false;
-                pMicrowave.Visible = true;
-                textBox40.Text = mv.TableDiametr.ToString();
-                comboBox19.Text = mv.HasGril.ToString();
-            }
-            else if (list[index] is WashingMashine wm)
-            {
-                pCleaner.Visible = false;
-                pWashingMashine.Visible = true;
-                pMicrowave.Visible = false;
-                textBox42.Text = wm.SpinSpeed.ToString();
-                textBox41.Text = wm.MaxKgLoad.ToString();
-            }
-            else if (list[index] is Cleaner c)
-            {
-                pCleaner.Visible = true;
-                pWashingMashine.Visible = false;
-                pMicrowave.Visible = false;
-                textBox39.Text = c.Type;
-                comboBox18.Text = c.HasBrush.ToString();
-            }
+            list[index].ImagesWhenDelete(this);
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

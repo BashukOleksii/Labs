@@ -71,5 +71,13 @@ namespace LabRob1
             row["Наявність грилю"] = HasGril;
         }
 
+        public override void ImagesWhenDelete(Form1 form)
+        {
+            base.ImagesWhenDelete(form);
+            form.pMicrowave.Visible = true;
+            form.textBox40.Text = TableDiametr.ToString();
+            form.comboBox19.Text = HasGril.ToString();
+        }
+
     }
 }
