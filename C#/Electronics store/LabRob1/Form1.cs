@@ -30,7 +30,26 @@ namespace LabRob1
         {
             InitializeComponent();
 
+            InitialTable();
 
+            list = new List<Appliances>();
+
+            saveFileDialog1.Filter = filter;
+            saveFileDialog1.Title = "Збереження в бінарний файл";
+            saveFileDialog1.FileName = "Збережений файл";
+
+            openFileDialog1.Filter = filter;
+            openFileDialog1.Title = "Відкриття бінарного файлу";
+            openFileDialog1.FileName = "Збережений файл";
+
+            chk = new CheckBox[] { checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15,checkBox22, checkBox20, checkBox21, checkBox18, checkBox19, checkBox16,checkBox17 };
+            textBoxes = new Control[] { textBox19, textBox25, textBox24, textBox22, textBox21, comboBox13, textBox20,textBox43, textBox38, comboBox17, textBox37, textBox36, textBox35,comboBox16 };
+        }
+
+
+        // Встановлення стовпців таблиці
+        private void InitialTable()
+        {
             dt.Columns.Add("ID", typeof(string));
             dt.Columns.Add("Ім'я", typeof(string));
             dt.Columns.Add("Бренд", typeof(string));
@@ -40,21 +59,20 @@ namespace LabRob1
             dt.Columns.Add("Потужність", typeof(int));
             dt.Columns.Add("Витратність (на год.)", typeof(double));
 
+            dt.Columns.Add("Діаметр тарілки", typeof(double));
+            dt.Columns.Add("Наявність грилю", typeof(string));
+
+            dt.Columns.Add("Обертів на хвилину", typeof(short));
+            dt.Columns.Add("Максимальна вага", typeof(double));
+
+            dt.Columns.Add("Тип пилососу", typeof(string));
+            dt.Columns.Add("Наявність щітки", typeof(string));
+
             dt1 = dt.Copy();
 
             dataGridView1.DataSource = dt;
-
-            list = new List<Appliances>();
-
-            saveFileDialog1.Filter = filter;
-            saveFileDialog1.Title = "Збереження в бінарний файл";
-
-            openFileDialog1.Filter = filter;
-            openFileDialog1.Title = "Відкриття бінарного файлу";
-
-            chk = new CheckBox[] { checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15 };
-            textBoxes = new Control[] { textBox19, textBox25, textBox24, textBox22, textBox21, comboBox13, textBox20 };
         }
+
 
 
 
@@ -64,12 +82,39 @@ namespace LabRob1
         // Створення
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(textBox9) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23) || IsEmpty(comboBox11))
+            int ind = toolStripComboBox1.SelectedIndex;
+            if (ind == -1)
                 return;
 
-            list.Add(new Appliances(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text)));
 
+            if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(textBox9) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23) || IsEmpty(comboBox11))
+                 return;
+            if(ind == 0)
+            {
+                if (IsEmpty(textBox11) || IsEmpty(comboBox14))
+                    return;
+                list.Add(new Microwave(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text),double.Parse(textBox31.Text),comboBox14.Text));
+            }
+            else if (ind == 2)
+            {
+                if (IsEmpty(comboBox20) || IsEmpty(comboBox15))
+                    return;
+                list.Add(new Cleaner(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text), comboBox20.Text, comboBox15.Text));
+            }
+            else if (ind == 1)
+            {
+                if (IsEmpty(textBox33) || IsEmpty(textBox34))
+                    return;
+                list.Add(new WashingMashine(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text), short.Parse(textBox33.Text), double.Parse(textBox34.Text)));
+            }
         }
+
+
+
+
+
+
+
 
 
 
@@ -104,6 +149,8 @@ namespace LabRob1
 
 
 
+
+
         private bool IsEmpty(Control t)
         {
             if (string.IsNullOrEmpty(t.Text))
@@ -114,9 +161,42 @@ namespace LabRob1
             return false;
         }
 
+
+
+
+
+
         private void AddToTable(DataTable t, Appliances a)
         {
-            t.Rows.Add(a.Id, a.Name, a.Brand, a.Price, a.Year, a.EnergyClass, a.Power, a.EnergyCost);
+            DataRow dRow = t.NewRow();
+
+            dRow["ID"] = a.Id;
+            dRow["Ім'я"] = a.Name;
+            dRow["Бренд"] = a.Brand;
+            dRow["Ціна"] = a.Price;
+            dRow["Рік випуску"] = a.Year;
+            dRow["Тип спожвання"] = a.EnergyClass;
+            dRow["Потужність"] = a.Power;
+            dRow["Витратність (на год.)"] = a.EnergyCost;
+
+            if (a is Microwave mv)
+            {
+                dRow["Діаметр тарілки"] = mv.TableDiametr;
+                dRow["Наявність грилю"] = mv.HasGril;
+            }
+            else if (a is WashingMashine wm)
+            {
+                dRow["Обертів на хвилину"] = wm.SpinSpeed;
+                dRow["Максимальна вага"] = wm.MaxKgLoad;
+            }
+            else if (a is Cleaner c)
+            {
+                dRow["Тип пилососу"] = c.Type;
+                dRow["Наявність щітки"] = c.HasBrush;
+            }
+
+            t.Rows.Add(dRow);
+
         }
 
         private void UpdateDataGridView1()
@@ -140,11 +220,14 @@ namespace LabRob1
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                if (row.Index < list.Count)
                     list[row.Index].Discount();
 
             UpdateDataGridView1();
         }
+
+
+
+
 
         private void вивестиМасивToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -156,6 +239,10 @@ namespace LabRob1
             foreach (Control c in controls)
                 c.Text = "";
         }
+
+
+
+
 
 
 
@@ -173,8 +260,10 @@ namespace LabRob1
                     using (FileStream fs = new FileStream(path, FileMode.Create))
                     using (BinaryWriter br = new BinaryWriter(fs))
                     {
+                        br.Write(list.Count);
                         foreach (Appliances a in list)
                         {
+                            br.Write(a.GetType().FullName);
                             br.Write(a.Id);
                             br.Write(a.Name);
                             br.Write(a.Brand);
@@ -182,6 +271,23 @@ namespace LabRob1
                             br.Write(a.Year);
                             br.Write(a.EnergyClass);
                             br.Write(a.Power);
+
+                            if(a is Microwave mv)
+                            {
+                                br.Write(mv.TableDiametr);
+                                br.Write(mv.HasGril);
+                            }
+                            else if(a is WashingMashine wm)
+                            {
+                                br.Write(wm.SpinSpeed);
+                                br.Write(wm.MaxKgLoad);
+                            }
+                            else if(a is Cleaner c)
+                            {
+                                br.Write(c.Type);
+                                br.Write(c.HasBrush);
+                            }
+
                         }
                     }
                 }
@@ -202,8 +308,12 @@ namespace LabRob1
                     using (BinaryReader br = new BinaryReader(fs))
                     {
                         list.Clear();
-                        while (br.BaseStream.Position < br.BaseStream.Length)
+                        int count = br.ReadInt32();
+
+                        for(int i = 0; i < count; i++)
                         {
+                            string typeName = br.ReadString();
+
                             string id = br.ReadString();
                             string name = br.ReadString();
                             string brand = br.ReadString();
@@ -213,7 +323,28 @@ namespace LabRob1
                             short power = br.ReadInt16();
 
 
-                            list.Add(new Appliances(id, name, brand, price, year, type, power));
+                            switch (typeName)
+                            {
+                                case "LabRob1.Microwave":
+                                    {
+                                        double TDiametr = br.ReadDouble();
+                                        string hasGrill = br.ReadString();
+                                        list.Add(new Microwave(id, name, brand, price, year, type, power, TDiametr, hasGrill));
+                                    }break;
+                                case "LabRob1.WashingMashine":
+                                    {
+                                        short SpinSpeed = br.ReadInt16();
+                                        double MaxKgLoad = br.ReadDouble();
+                                        list.Add(new WashingMashine(id, name, brand, price, year, type, power, SpinSpeed, MaxKgLoad));
+                                    }break;
+                                case "LabRob1.Cleaner":
+                                    {
+                                        string t = br.ReadString();
+                                        string hasBrush = br.ReadString();
+                                        list.Add(new Cleaner(id, name, brand, price, year, type, power, t, hasBrush));
+
+                                    }break;
+                            }
 
                         }
                     }
@@ -231,7 +362,10 @@ namespace LabRob1
 
 
 
-        // Виделення
+
+
+
+        // Видалення
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -246,6 +380,31 @@ namespace LabRob1
             textBox15.Text = list[index].Year.ToString();
             comboBox12.Text = list[index].EnergyClass;
             textBox14.Text = list[index].Power.ToString();
+
+            if (list[index] is Microwave mv)
+            {
+                pCleaner.Visible = false;
+                pWashingMashine.Visible = false;
+                pMicrowave.Visible = true;
+                textBox40.Text = mv.TableDiametr.ToString();
+                comboBox19.Text = mv.HasGril.ToString();
+            }
+            else if (list[index] is WashingMashine wm)
+            {
+                pCleaner.Visible = false;
+                pWashingMashine.Visible = true;
+                pMicrowave.Visible = false;
+                textBox42.Text = wm.SpinSpeed.ToString();
+                textBox41.Text = wm.MaxKgLoad.ToString();
+            }
+            else if (list[index] is Cleaner c)
+            {
+                pCleaner.Visible = true;
+                pWashingMashine.Visible = false;
+                pMicrowave.Visible = false;
+                textBox39.Text = c.Type;
+                comboBox18.Text = c.HasBrush.ToString();
+            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -280,13 +439,10 @@ namespace LabRob1
             string text = tabControl.SelectedTab.Text;
 
             if (text == "Пошук")
-            {
                 smallSize();
-            }
             else
-            {
                 bigSize();
-            }
+            
 
             toolStripButton11.Visible = false;
 
@@ -362,10 +518,16 @@ namespace LabRob1
 
 
 
-        // Конструктор зазамовчуванням
+        //Конструктор зазамовчуванням
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-            list.Add(new Appliances());
+            int ind = toolStripComboBox1.SelectedIndex;
+            if(ind == 0)
+                list.Add(new Microwave());
+            if(ind == 1)
+                list.Add(new WashingMashine());
+            if(ind == 2)
+                list.Add(new Cleaner());
         }
 
 
@@ -458,9 +620,6 @@ namespace LabRob1
             {
                 int index = row.Index;
 
-                if (index >= list.Count) 
-                    continue;
-
                 find.Add(list[index]);
             }
 
@@ -497,11 +656,6 @@ namespace LabRob1
             toolStripButton11.Visible = false;
         }
 
-
-
-
-        // Виправити цикл, бо коли вибирати останійелемент (пустий) і передонстанній, то результат не правильний
-
         private void toolStripButton10_Click(object sender, EventArgs e)
         {
             int count = dataGridView1.SelectedRows.Count;
@@ -531,18 +685,19 @@ namespace LabRob1
                     for (int i = 0; i < dataGridView1.SelectedRows.Count; i++) 
                     {
                         int indexRow = dataGridView1.SelectedRows[i].Index;
-                        if (indexRow >= list.Count)
+                        if (indexRow < 0)
                             continue;
 
                         if (list[indexRow])
+                        {
                             AddToTable(dt1, list[indexRow]);
-
+                        }
                         if (i < dataGridView1.SelectedRows.Count - 1)
                         {
-                            if (list[i] || list[i + 1])
+                            if (list[dataGridView1.SelectedRows[i].Index] || list[dataGridView1.SelectedRows[i + 1].Index])
                                 one = true;
 
-                            if (!(list[i] && list[i + 1]))
+                            if (!(list[dataGridView1.SelectedRows[i].Index] && list[dataGridView1.SelectedRows[i + 1].Index]))
                                 all = false;
                         }
 
@@ -679,6 +834,71 @@ namespace LabRob1
             }
            
         }
+
+
+
+    
+
+        private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mainAdd.Visible = true;
+
+            if (toolStripComboBox1.SelectedIndex == 0)
+            {
+                Microwave.Visible = true;
+                Cleaner.Visible = false;
+                WashingMashine.Visible = false;
+            }
+            else if (toolStripComboBox1.SelectedIndex == 2)
+            {
+                Microwave.Visible = false;
+                Cleaner.Visible = true;
+                WashingMashine.Visible = false;
+            }
+            else if (toolStripComboBox1.SelectedIndex == 1)
+            {
+                Microwave.Visible = false;
+                Cleaner.Visible = false;
+                WashingMashine.Visible = true;
+            }
+        }
+
+        private void toolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (toolStripComboBox2.SelectedIndex == 0)
+            {
+                panelMicrowave.Visible = true;
+                panelCleaner.Visible = false;
+                panelWashingMashine.Visible = false;
+                checkBox16.Checked = false;
+                checkBox17.Checked = false;
+                checkBox18.Checked = false;
+                checkBox19.Checked = false;
+            }
+            else if (toolStripComboBox2.SelectedIndex == 2)
+            {
+                panelMicrowave.Visible = false;
+                panelCleaner.Visible = true;
+                panelWashingMashine.Visible = false;
+                checkBox20.Checked = false;
+                checkBox21.Checked = false;
+                checkBox18.Checked = false;
+                checkBox19.Checked = false;
+            }
+            else if (toolStripComboBox2.SelectedIndex == 1)
+            {
+                panelMicrowave.Visible = false;
+                panelCleaner.Visible = false;
+                panelWashingMashine.Visible = true;
+                checkBox16.Checked = false;
+                checkBox17.Checked = false;
+                checkBox20.Checked = false;
+                checkBox21.Checked = false;
+            }
+        }
     }
 
 }
+
+// Створення і конструктор зазамовчуванням

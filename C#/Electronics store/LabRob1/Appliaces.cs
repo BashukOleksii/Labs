@@ -2,6 +2,7 @@
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LabRob1
 {
-    public class Appliances
+    public abstract class Appliances
     {
         static int id = 1;
         public string Id { get; private set; }
@@ -60,46 +61,40 @@ namespace LabRob1
             EnergyCost = (double)Power * priceKW /1000;
         }
 
-        bool disc = false;
-        public void Discount()
-        {
-            double discount = 0;
+        protected bool disc = false;
+        public abstract void Discount();
 
-            switch (EnergyClass)
-            {
-                case "A+++": discount = 0.2;break;
-                case "A++": discount = 0.1;break;
-                case "A+": discount = 0.1;break;
-            }
-
-            if(disc == false)
-            {
-                disc = true;
-                Price -= Price * discount;
-            }
-        }
+public abstract Appliances Clone();
     
 
      // Оператори:
        
         public static Appliances operator+(Appliances a, double num)
         {
-            return new Appliances(a) { Price = a.Price + num };
+            Appliances app = a.Clone();
+            app.Price += num;
+            return app;
         }
 
         public static Appliances operator-(Appliances a, double num)
         {
-            return new Appliances(a) { Price = a.Price - num }; 
+            Appliances app = a.Clone();
+            app.Price -= num;
+            return app;
         }
 
         public static Appliances operator *(Appliances a, double num)
         {
-            return new Appliances(a) { Price = a.Price * num };
+            Appliances app = a.Clone();
+            app.Price *= num;
+            return app;
         }
         
         public static Appliances operator /(Appliances a, double num)
         {
-            return new Appliances(a) { Price = a.Price / num };
+            Appliances app = a.Clone();
+            app.Price /= num;
+            return app;
         }
 
 
@@ -114,12 +109,13 @@ namespace LabRob1
             int now = DateTime.Now.Year;
             return a.Year != now;
         }
+        //
         public static Appliances operator &(Appliances a1, Appliances a2)
         {
             int now = DateTime.Now.Year;
             if((a1.Year == now) && (a2.Year == now))
                 return a1;
-            return new Appliances();
+            return null;
         }
 
         public static Appliances operator |(Appliances a1, Appliances a2)
@@ -129,7 +125,7 @@ namespace LabRob1
                 return a1;
             if (now == a2.Year)
                 return a2;
-            return new Appliances();
+            return null;
         }
         public static bool operator!(Appliances a)
         {
@@ -142,7 +138,7 @@ namespace LabRob1
         {
             return a.Price;
         }
-        public static implicit operator string(Appliances a)
+        public static  implicit operator string(Appliances a)
         {
             return a.Name + " " + a.Brand;
         }
