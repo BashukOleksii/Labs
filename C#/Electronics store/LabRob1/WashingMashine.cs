@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +45,20 @@ namespace LabRob1
                 Price -= discount;
                 disc = false;
             }
+        }
+
+        public override void WriteToFile(BinaryWriter writer)
+        {
+            base.WriteToFile(writer);
+            writer.Write(SpinSpeed);
+            writer.Write(MaxKgLoad);
+        }
+
+        public override void ReadFromFile(BinaryReader reader)
+        {
+            base.ReadFromFile(reader);
+            SpinSpeed = reader.ReadInt16();
+            MaxKgLoad = reader.ReadDouble();
         }
     }
 }

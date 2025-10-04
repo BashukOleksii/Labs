@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appliaces.cs" />
+    <Compile Include="ApplianceService.cs" />
     <Compile Include="Cleaner.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

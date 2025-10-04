@@ -4,6 +4,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Runtime.Remoting.Messaging;
@@ -164,18 +165,43 @@ public abstract Appliances Clone();
         }
 
         // Унарні оператори
-
         public static Appliances operator ++(Appliances a)
         {
             a.Price += 1000;
             return a;
         }
-
         public static Appliances operator --(Appliances a)
         {
             a.Price -= 1000;
             return a;
         }
 
+
+        public virtual void WriteToFile(BinaryWriter writer)
+        {
+            writer.Write(Id);
+            writer.Write(Name);
+            writer.Write(Brand);
+            writer.Write(Price);
+            writer.Write(Year);
+            writer.Write(EnergyClass);
+            writer.Write(Power);
+            writer.Write(EnergyCost);
+        }
+
+        public virtual void ReadFromFile(BinaryReader reader)
+        {
+            Id = reader.ReadString();
+            Name = reader.ReadString();
+            Brand = reader.ReadString();
+            Price = reader.ReadDouble();
+            Year = reader.ReadInt16();
+            EnergyClass = reader.ReadString();
+            Power = reader.ReadInt16();
+            EnergyCost = reader.ReadDouble();
+
+        }
+
+       
     }
 }

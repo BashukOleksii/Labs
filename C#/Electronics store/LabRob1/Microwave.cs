@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,19 @@ namespace LabRob1
 
         }
 
+        public override void WriteToFile(BinaryWriter writer)
+        {
+            base.WriteToFile(writer);
+            writer.Write(TableDiametr);
+            writer.Write(HasGril);
+        }
+
+        public override void ReadFromFile(BinaryReader reader)
+        {
+            base.ReadFromFile(reader);
+            TableDiametr = reader.ReadDouble();
+            HasGril = reader.ReadString(); 
+        }
 
     }
 }

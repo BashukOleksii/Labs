@@ -17,6 +17,7 @@ namespace LabRob1
 {
     public partial class Form1 : Form
     {
+        ApplianceService applianceService;
         DataTable dt = new DataTable();
         DataTable dt1;
 
@@ -31,6 +32,8 @@ namespace LabRob1
             InitializeComponent();
 
             InitialTable();
+
+            applianceService = new ApplianceService();
 
             list = new List<Appliances>();
 
@@ -54,9 +57,9 @@ namespace LabRob1
             dt.Columns.Add("Ім'я", typeof(string));
             dt.Columns.Add("Бренд", typeof(string));
             dt.Columns.Add("Ціна", typeof(double));
-            dt.Columns.Add("Рік випуску", typeof(int));
+            dt.Columns.Add("Рік випуску", typeof(short));
             dt.Columns.Add("Тип спожвання", typeof(string));
-            dt.Columns.Add("Потужність", typeof(int));
+            dt.Columns.Add("Потужність", typeof(short));
             dt.Columns.Add("Витратність (на год.)", typeof(double));
 
             dt.Columns.Add("Діаметр тарілки", typeof(double));
@@ -251,107 +254,19 @@ namespace LabRob1
         // Збереженн  - читання
         private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (list.Count > 0 && saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string path = saveFileDialog1.FileName;
+            if (list.Count > 0)
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                     applianceService.SaveToFile(saveFileDialog1.FileName, list);
+            else
+                MessageBox.Show("Список для збереження пустий", "Поилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    using (FileStream fs = new FileStream(path, FileMode.Create))
-                    using (BinaryWriter br = new BinaryWriter(fs))
-                    {
-                        br.Write(list.Count);
-                        foreach (Appliances a in list)
-                        {
-                            br.Write(a.GetType().FullName);
-                            br.Write(a.Id);
-                            br.Write(a.Name);
-                            br.Write(a.Brand);
-                            br.Write(a.Price);
-                            br.Write(a.Year);
-                            br.Write(a.EnergyClass);
-                            br.Write(a.Power);
-
-                            if(a is Microwave mv)
-                            {
-                                br.Write(mv.TableDiametr);
-                                br.Write(mv.HasGril);
-                            }
-                            else if(a is WashingMashine wm)
-                            {
-                                br.Write(wm.SpinSpeed);
-                                br.Write(wm.MaxKgLoad);
-                            }
-                            else if(a is Cleaner c)
-                            {
-                                br.Write(c.Type);
-                                br.Write(c.HasBrush);
-                            }
-
-                        }
-                    }
-                }
-                catch { MessageBox.Show("Помилка запису в файл", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
-
-
-            }
         }
 
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    string path = openFileDialog1.FileName;
-                    using (FileStream fs = new FileStream(path, FileMode.Open))
-                    using (BinaryReader br = new BinaryReader(fs))
-                    {
-                        list.Clear();
-                        int count = br.ReadInt32();
-
-                        for(int i = 0; i < count; i++)
-                        {
-                            string typeName = br.ReadString();
-
-                            string id = br.ReadString();
-                            string name = br.ReadString();
-                            string brand = br.ReadString();
-                            double price = br.ReadDouble();
-                            short year = br.ReadInt16();
-                            string type = br.ReadString();
-                            short power = br.ReadInt16();
-
-
-                            switch (typeName)
-                            {
-                                case "LabRob1.Microwave":
-                                    {
-                                        double TDiametr = br.ReadDouble();
-                                        string hasGrill = br.ReadString();
-                                        list.Add(new Microwave(id, name, brand, price, year, type, power, TDiametr, hasGrill));
-                                    }break;
-                                case "LabRob1.WashingMashine":
-                                    {
-                                        short SpinSpeed = br.ReadInt16();
-                                        double MaxKgLoad = br.ReadDouble();
-                                        list.Add(new WashingMashine(id, name, brand, price, year, type, power, SpinSpeed, MaxKgLoad));
-                                    }break;
-                                case "LabRob1.Cleaner":
-                                    {
-                                        string t = br.ReadString();
-                                        string hasBrush = br.ReadString();
-                                        list.Add(new Cleaner(id, name, brand, price, year, type, power, t, hasBrush));
-
-                                    }break;
-                            }
-
-                        }
-                    }
-
-                }
-                catch { MessageBox.Show("Помилка читання файлу.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error); return; }
-
+                list = applianceService.LoadFromFile(openFileDialog1.FileName);
                 UpdateDataGridView1();
             }
         }
