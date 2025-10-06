@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LR3
+
+namespace LabRob1
 {
-    internal class Plane
+    public interface IApliance
     {
+         void Discount();
+
+         Appliances Clone();
     }
 }

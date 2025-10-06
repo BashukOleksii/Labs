@@ -55,6 +55,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="IApliance.cs" />
+    <Compile Include="IData.cs" />
     <Compile Include="MessageBoxMy.cs">
       <SubType>Form</SubType>
     </Compile>

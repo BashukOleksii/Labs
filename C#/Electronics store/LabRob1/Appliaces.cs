@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace LabRob1
 {
-    public abstract class Appliances
+    public abstract class Appliances: IApliance
     {
         #region Властивості
         

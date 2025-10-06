@@ -26,7 +26,7 @@ public:
 	static void Shapka();
 
 	virtual void Print() {
-		cout << setw(13) << GetName() << " |" << setw(8) << GetEnteredYear() << " |" << setw(8) << GetEducation() << " |";
+		cout << setw(13) << GetName() << " |" << setw(8) << GetEnteredYear() << " |" << setw(13) << GetEducation() << " |";
 	}
 
 

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LR3
+namespace LabRob1
 {
-    internal class Program
+    internal interface IData
     {
-        static void Main(string[] args)
-        {
-        }
+
     }
 }

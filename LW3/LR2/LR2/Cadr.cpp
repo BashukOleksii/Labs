@@ -18,7 +18,7 @@ void Cadr::Add() {
 }
 
 void Cadr::Shapka() {
-	cout << setw(15) << "Iм'я |" << setw(10) << "Вступ |" << setw(10) << "Освiта |";
+	cout << setw(15) << "Iм'я |" << setw(10) << "Вступ |" << setw(15) << "Освiта |";
 	cout << setw(15) << "Продукцiї |" << setw(10) << "Розряд |";
 	cout << setw(15) << "Спецiалiзацiя |" << setw(10) << "Проєктiв |";
 	cout << setw(15) << "Посада |" << setw(10) << "Пiдданих" << endl;
@@ -79,7 +79,7 @@ void Cadr::NormalNum(int& num) {
 
 void Cadr::PrintLine()
 {
-	for (int i = 0; i < 110; i++)
+	for (int i = 0; i < 115; i++)
 		cout << "-";
 	cout << endl;
 }

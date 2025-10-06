@@ -79,7 +79,7 @@ public:
 
 	void SetDischarge() {
 		cout << "Введiть розр'яд: ";
-		cin >> discharge; NormalNum(discharge);
+		cin >> discharge; Normal(discharge);
 	}
 
 
@@ -107,7 +107,7 @@ public:
 
 
 private:
-	void NormalNum(int& num) override {
+	void Normal(int& num) {
 
 		while (num < 0 || num > 4) {
 			cout << "Невiрний розряд." << endl;

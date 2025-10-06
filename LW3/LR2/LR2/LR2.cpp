@@ -2,51 +2,54 @@
 #include "Engineer.h"
 #include "Administration.h"
 #include "List.h"
+#include <Windows.h>
 
 int main() {
-	setlocale(0, "UKR");
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
 
-	Cadr* worker = new Worker("Name1",2020,"Hight",10,1);
-	Cadr* engineer = new Engineer("Name2",2010,"Mega","Master",100);
-	Cadr* administration = new Administration("Name3",2025,"Normal","Master",10);
+	cout << "Створення об'єктів абстрактного класу за допомогою конструктора та виведення: " << endl;
+	Cadr* worker = new Worker("Ернест",2020,"Професійна",10,1);
+	Cadr* engineer = new Engineer("Тарас", 2010, "Вища", "Електроніка", 50);
+	Cadr* administration = new Administration("Євген",2025,"Вища","Керуючий",10);
 
 	Cadr::Shapka();
-	worker->Print();
-	engineer->Print();
-	administration->Print();
+		worker->Print();
+		engineer->Print();
+		administration->Print();
 
-	cout << "Виведення списку" << endl;
-	List::Show();
+	cout << "Розрахування зарплати робітника: " << worker->GetSalary() << endl;
+	cout << "Розрахування зарплати інженера: " << engineer->GetSalary() << endl;
+	cout << "Розрахування зарплати адміністрації: " << administration->GetSalary() << endl;
 
 	cout << "Використання iнкремента та декремента: " << endl;
 	++*worker;
 	++(++(++(*engineer)));
 	--*administration;
-
 	List::Show();
 
-	cout << "Додавання пустого ерез функцiю." << endl;
+	cout << "Створення за замовчуванням:" << endl;
 	Cadr* empty = new Worker();
 	empty->Add();
 	List::Show();
 
 
-	cout << "Додавання масиву з п'яти робiтникiв" << endl;
+	cout << "Додавання масиву з п'яти робiтникiв та виведення:" << endl;
 
 	Cadr* workers[5];
 
 	for (int i = 0; i < 5; i++) {
-		workers[i] = new Administration();
+		workers[i] = new Worker();
 		workers[i]->Init();
 		workers[i]->Add();
 	}
 
 	List::Show();
 
+	cout << "Пошук за ім'ям: " << endl;
+
 	cout << "Введiть iм'я для пошуку: " << endl;
-
 	string name; getline(cin, name);
-
 	List::Find(name);
 
 
