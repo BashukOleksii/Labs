@@ -17,7 +17,12 @@ namespace LabRob1
 {
     public abstract class Appliances
     {
+        #region Властивості
+        
         static int id = 1;
+        const double priceKW = 3.25;
+
+
         public string Id { get; private set; }
         public string Name { get; set; }
         public string Brand { get; set; }
@@ -28,6 +33,15 @@ namespace LabRob1
         public string EnergyClass { get; set; }
         public short Power { get; set; }
         public double EnergyCost { get; private set; }
+
+        private void CalculateCost()
+        {
+            EnergyCost = (double)Power * priceKW/1000;
+        }
+
+        #endregion
+
+        #region Конструктори
 
         public Appliances(): this(id.ToString(),"Ім'я " + id, "Бренд " + id, 0, 0, "No",0) { }
 
@@ -57,21 +71,19 @@ namespace LabRob1
             this.EnergyCost = other.EnergyCost;
         }
 
-        // Вартість за годину роботи
-        private void CalculateCost()
-        {
-            double priceKW = 3.25;
-            EnergyCost = (double)Power * priceKW /1000;
-        }
+        #endregion
+
+        #region Абстрактні методи
 
         protected bool disc = false;
         public abstract void Discount();
 
-public abstract Appliances Clone();
-    
+        public abstract Appliances Clone();
 
-     // Оператори:
-       
+        #endregion
+
+        #region Оператори
+
         public static Appliances operator+(Appliances a, double num)
         {
             Appliances app = a.Clone();
@@ -178,7 +190,9 @@ public abstract Appliances Clone();
             return a;
         }
 
+        #endregion
 
+        #region Віртуальні методи 
         public virtual void WriteToFile(BinaryWriter writer)
         {
             writer.Write(Id);
@@ -228,6 +242,9 @@ public abstract Appliances Clone();
             form.pCleaner.Visible = false;
             form.pWashingMashine.Visible = false;
             form.pMicrowave.Visible = false;
-        } 
+        }
+
+        #endregion
+
     }
 }

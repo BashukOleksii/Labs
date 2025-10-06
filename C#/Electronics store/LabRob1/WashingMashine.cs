@@ -10,9 +10,15 @@ namespace LabRob1
 {
     public class WashingMashine: Appliances
     {
+
+        #region Властивості
+
         public short SpinSpeed { get; set; }
         public double MaxKgLoad { get; set; }
 
+        #endregion
+
+        #region Конструктори
         public WashingMashine(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power, short SpinSpeed, double MaxKgLoad) : base(Id, Name, Brand, Price, Year, EnergyClass, Power)
         {
             this.SpinSpeed = SpinSpeed;
@@ -20,10 +26,15 @@ namespace LabRob1
         }
 
         public WashingMashine() : base() { SpinSpeed = 0; MaxKgLoad = 0; }
+
         public WashingMashine(WashingMashine other):base(other) {
             this.SpinSpeed = other.SpinSpeed;
             this.MaxKgLoad = other.MaxKgLoad;
         }
+
+        #endregion
+
+        #region Перевизначення
 
         public override Appliances Clone()
         {
@@ -41,7 +52,7 @@ namespace LabRob1
             else
                 discount = Price * 0.15;
 
-            if (disc)
+            if (!disc)
             {
                 Price -= discount;
                 disc = false;
@@ -76,5 +87,7 @@ namespace LabRob1
             form.textBox42.Text = SpinSpeed.ToString();
             form.textBox41.Text = MaxKgLoad.ToString();
         }
+
+        #endregion
     }
 }

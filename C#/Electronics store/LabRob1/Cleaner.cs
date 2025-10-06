@@ -10,8 +10,15 @@ namespace LabRob1
 {
     public class Cleaner: Appliances
     {
+
+        #region Властивості
+
         public string Type { get; set; }
         public string HasBrush {  get; set; }
+
+        #endregion
+
+        #region Конструктори
 
         public Cleaner() : base() { Type = "None"; HasBrush = "Ні"; }
         public Cleaner(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power, string Type, string HasBrush) : base(Id, Name, Brand, Price, Year, EnergyClass, Power)
@@ -26,6 +33,9 @@ namespace LabRob1
             this.HasBrush = other.HasBrush;
         }
 
+        #endregion
+
+        #region Перевизначення
         public override Appliances Clone()
         {
             return new Cleaner(this);
@@ -35,14 +45,14 @@ namespace LabRob1
         {
             double discount = 0;
 
-            if (Type == "Класчний")
+            if (Type == "Класичний")
                 discount = Price * 0.05;
-            else if (Type == "Верикальний")
+            else if (Type == "Вертикальний")
                 discount = Price * 0.03;
             else if (Type == "Робот")
                 discount = Price * 0.01;
 
-            if (disc)
+            if (!disc)
             {
                 Price -= discount;
                 disc = false; 
@@ -77,6 +87,8 @@ namespace LabRob1
             form.textBox39.Text = Type;
             form.comboBox18.Text = HasBrush.ToString();
         }
+
+        #endregion
 
     }
 }

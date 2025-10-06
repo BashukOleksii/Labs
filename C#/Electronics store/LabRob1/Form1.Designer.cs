@@ -138,7 +138,6 @@
             this.checkBox16 = new System.Windows.Forms.CheckBox();
             this.label50 = new System.Windows.Forms.Label();
             this.comboBox16 = new System.Windows.Forms.ComboBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.checkBox22 = new System.Windows.Forms.CheckBox();
@@ -240,6 +239,7 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.comboBox21 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -980,6 +980,8 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(435, 27);
             this.dataGridView1.Name = "dataGridView1";
@@ -998,6 +1000,8 @@
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(435, 281);
             this.dataGridView2.Name = "dataGridView2";
@@ -1254,7 +1258,7 @@
             this.panelWashingMashine.Controls.Add(this.label52);
             this.panelWashingMashine.Controls.Add(this.textBox37);
             this.panelWashingMashine.Controls.Add(this.label53);
-            this.panelWashingMashine.Location = new System.Drawing.Point(3, 304);
+            this.panelWashingMashine.Location = new System.Drawing.Point(4, 312);
             this.panelWashingMashine.Name = "panelWashingMashine";
             this.panelWashingMashine.Size = new System.Drawing.Size(394, 120);
             this.panelWashingMashine.TabIndex = 65;
@@ -1325,7 +1329,7 @@
             this.panelMicrowave.Controls.Add(this.comboBox17);
             this.panelMicrowave.Controls.Add(this.textBox38);
             this.panelMicrowave.Controls.Add(this.label55);
-            this.panelMicrowave.Location = new System.Drawing.Point(6, 314);
+            this.panelMicrowave.Location = new System.Drawing.Point(10, 312);
             this.panelMicrowave.Name = "panelMicrowave";
             this.panelMicrowave.Size = new System.Drawing.Size(394, 120);
             this.panelMicrowave.TabIndex = 19;
@@ -1394,13 +1398,13 @@
             // 
             // panelCleaner
             // 
+            this.panelCleaner.Controls.Add(this.comboBox21);
             this.panelCleaner.Controls.Add(this.checkBox17);
             this.panelCleaner.Controls.Add(this.checkBox16);
             this.panelCleaner.Controls.Add(this.label50);
             this.panelCleaner.Controls.Add(this.comboBox16);
-            this.panelCleaner.Controls.Add(this.textBox35);
             this.panelCleaner.Controls.Add(this.label51);
-            this.panelCleaner.Location = new System.Drawing.Point(5, 311);
+            this.panelCleaner.Location = new System.Drawing.Point(7, 315);
             this.panelCleaner.Name = "panelCleaner";
             this.panelCleaner.Size = new System.Drawing.Size(394, 120);
             this.panelCleaner.TabIndex = 64;
@@ -1447,14 +1451,6 @@
             this.comboBox16.Size = new System.Drawing.Size(358, 28);
             this.comboBox16.TabIndex = 17;
             this.comboBox16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox11_KeyPress);
-            // 
-            // textBox35
-            // 
-            this.textBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox35.Location = new System.Drawing.Point(0, 30);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(360, 26);
-            this.textBox35.TabIndex = 17;
             // 
             // label51
             // 
@@ -2530,6 +2526,19 @@
             this.tabControl2.TabIndex = 4;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_TabIndexChanged);
             // 
+            // comboBox21
+            // 
+            this.comboBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox21.Items.AddRange(new object[] {
+            "Класичний",
+            "Верикальний",
+            "Робот",
+            "Ручний"});
+            this.comboBox21.Location = new System.Drawing.Point(3, 28);
+            this.comboBox21.Name = "comboBox21";
+            this.comboBox21.Size = new System.Drawing.Size(357, 28);
+            this.comboBox21.TabIndex = 66;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2544,7 +2553,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Таблиця";
-            this.TopMost = true;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -2757,7 +2765,6 @@
         private System.Windows.Forms.Panel panelCleaner;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.ComboBox comboBox16;
-        private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.CheckBox checkBox17;
         private System.Windows.Forms.CheckBox checkBox16;
@@ -2816,6 +2823,7 @@
         public System.Windows.Forms.Panel pCleaner;
         public System.Windows.Forms.Panel pMicrowave;
         public System.Windows.Forms.Panel pWashingMashine;
+        private System.Windows.Forms.ComboBox comboBox21;
     }
 }
 

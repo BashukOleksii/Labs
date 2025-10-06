@@ -10,9 +10,14 @@ namespace LabRob1
 {
     public class Microwave: Appliances
     {
+
+        #region Властивості
         public double TableDiametr {  get; set; }
         public string HasGril { get; set; }
 
+        #endregion
+
+        #region Конструктори
         public Microwave() :base(){ TableDiametr = 0; HasGril = "Ні"; }
 
         public Microwave(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power, double TableDiametr,string HasGrill) : base(Id, Name, Brand, Price, Year, EnergyClass, Power)
@@ -26,6 +31,10 @@ namespace LabRob1
             this.HasGril = other.HasGril;
         }
 
+        #endregion
+
+        #region Перевизначення
+
         public override Appliances Clone()
         {
             return new Microwave(this);
@@ -35,14 +44,14 @@ namespace LabRob1
         {
             double discount;
 
-            if (TableDiametr < 5)
-                discount = Price * 0.1;
-            else if (TableDiametr < 10)
-                discount = Price * 0.2;
+            if (TableDiametr < 10)
+                discount = Price * 0.03;
+            else if (TableDiametr < 15)
+                discount = Price * 0.05;
             else
-                discount = Price * 0.3;
+                discount = Price * 0.01;
 
-            if (disc)
+            if (!disc)
             {
                 Price -= discount;
                 disc = false;
@@ -79,5 +88,7 @@ namespace LabRob1
             form.comboBox19.Text = HasGril.ToString();
         }
 
+        #endregion
+
     }
-}
+}   
