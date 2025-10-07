@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LabRob1
 {
-    public interface IApliance
+    public interface IAppliance
     {
          void Discount();
 

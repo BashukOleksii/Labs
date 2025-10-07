@@ -55,9 +55,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IApliance.cs" />
-    <Compile Include="IData.cs" />
-    <Compile Include="IFormWork.cs" />
+    <Compile Include="Interfaces\IApliance.cs" />
+    <Compile Include="Interfaces\IData.cs" />
+    <Compile Include="Interfaces\IFormWork.cs" />
     <Compile Include="MessageBoxMy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,5 +96,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

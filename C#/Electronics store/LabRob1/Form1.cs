@@ -17,6 +17,7 @@ namespace LabRob1
 {
     public partial class Form1 : Form
     {
+
         #region Змінні та конструктор
         ApplianceService applianceService;
         DataTable dt = new DataTable();
@@ -54,7 +55,6 @@ namespace LabRob1
 
 
         #region Основні кнопки
-
 
         // Створення
         private void toolStripButton5_Click(object sender, EventArgs e)
