@@ -15,7 +15,7 @@ public :
 		cout << "Викликано конструктор класу B1" << endl;
 	}
 
-	virtual void Show() = 0;
+	virtual void Print() = 0;
 
 	virtual void Init() = 0;
 

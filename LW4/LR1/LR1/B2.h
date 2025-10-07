@@ -13,7 +13,7 @@ public:
 
 	virtual void abstractMethod2() = 0;
 
-	virtual void Show() {
+	virtual void Print() {
 		cout << setw(18) << b2 << " |";
 	}
 

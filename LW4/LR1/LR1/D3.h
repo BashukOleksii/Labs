@@ -15,9 +15,9 @@ public:
 	void abstractMethod2() override {
 		cout << "Визначення абстрактного методу в класі D3" << endl;
 	}
-	void Show()override {
-		D2::Show();
-		B2::Show();
+	void Print()override {
+		D2::Print();
+		B2::Print();
 		cout << setw(18) << d3 << " |";
 	}
 

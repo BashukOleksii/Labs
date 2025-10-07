@@ -11,13 +11,13 @@ int main()
 	D4 d4 = D4(12.5777, 1, 123981990, 11.11, 'A');
 
 	B1::Shapka();
-	d4.Show();
+	d4.Print();
 
 	cout << "Заповнення полів вручну: " << endl;
 	d4.Init();
 
 	B1::Shapka();
-	d4.Show();
+	d4.Print();
 
 	cout << "Виклик деструкторів:" << endl;
 

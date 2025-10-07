@@ -11,9 +11,9 @@ public:
 	
 
 	
-	void Show () override{
-		D1::Show();
-		D3::Show();
+	void Print() override{
+		D1::Print();
+		D3::Print();
 		cout << setw(20) << d4 << endl;
 	}
 

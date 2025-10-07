@@ -12,7 +12,7 @@
 
 	
 
-		void Show() override {
+		void Print() override {
 			cout << setw(18) << d2 << " |";
 		}
 	

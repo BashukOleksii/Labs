@@ -11,7 +11,7 @@ public:
 
 	
 
-	void Show() override {
+	void Print() override {
 		cout << setw(18) << d1 << " |";
 	}
 
