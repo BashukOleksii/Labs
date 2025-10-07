@@ -9,6 +9,10 @@ protected:
 public:
 	D1(int _b1 = 0, double _d1 = 0) : B1(_b1), d1(_d1) { cout << "Викликано конструктор похідного класу D1" << endl; }
 
+	void abstractMethod1() override {
+		cout << "Визначення абстрактного методу в класі D1" << endl;
+	}
+
 	void Show() override {
 		cout << setw(18) << d1 << " |";
 	}

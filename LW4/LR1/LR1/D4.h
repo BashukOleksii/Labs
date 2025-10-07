@@ -8,6 +8,11 @@ protected:
 	char d4;
 public:
 	D4(int _b1 = 0, double _d1 = 0, short _d2 = 0, long _b2 = 0, float _d3 = 0, char _d4 = '\0') : B1(_b1), D1(_b1, _d1), D3(_b1, _d2, _b2, _d3), d4(_d4) { cout << "Викликано конструктор похідного класу D4" << endl; }
+	
+	void abstractMethod1()  override {
+		cout << "Викликано абстрактний метод з класу D4" << endl;
+	}
+	
 	void Show () override{
 		B1::Show();
 		D1::Show();

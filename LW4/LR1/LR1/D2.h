@@ -10,6 +10,10 @@ public:
 		cout << "Викликано конструкор похідного класу D2" << endl;;
 	}
 
+	void abstractMethod1() override {
+		cout << "Визначення абстрактного методу в класі D2" << endl;
+	}
+
 	void Show() override {
 		cout << setw(18) << d2 << " |";
 	}

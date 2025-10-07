@@ -12,6 +12,9 @@ public:
 		cout << "Викликано конструктор похідного класу D3" << endl;
 	}
 
+	void abstractMethod2() override {
+		cout << "Визначення абстрактного методу в класі D3" << endl;
+	}
 	void Show()override {
 		D2::Show();
 		B2::Show();
