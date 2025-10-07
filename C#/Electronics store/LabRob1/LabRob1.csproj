@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="IApliance.cs" />
     <Compile Include="IData.cs" />
+    <Compile Include="IFormWork.cs" />
     <Compile Include="MessageBoxMy.cs">
       <SubType>Form</SubType>
     </Compile>

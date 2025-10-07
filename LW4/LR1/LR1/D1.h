@@ -7,7 +7,7 @@ class D1: virtual protected B1 {
 protected:
 	double d1;
 public:
-	D1(double _d1 = 0) : d1(_d1) { cout << "Викликано конструктор похідного класу D1" << endl; }
+	D1(int _b1,double _d1 = 0) : B1(_b1), d1(_d1) { cout << "Викликано конструктор похідного класу D1" << endl; }
 
 	
 

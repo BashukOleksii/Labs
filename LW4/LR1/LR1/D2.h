@@ -6,11 +6,10 @@
 	protected:
 		short d2;
 	public:
-		D2(short _d2 = 0) :  d2(_d2) {
+		D2(int _b1, short _d2 = 0) : B1(_b1), d2(_d2) {
 			cout << "Викликано конструкор похідного класу D2" << endl;;
 		}
 
-	
 
 		void Print() override {
 			cout << setw(18) << d2 << " |";

@@ -8,7 +8,7 @@ protected:
 	float d3;
 public:
 
-	D3( short _d2 =0, long _b2 =0, float _d3 = 0) : D2(_d2), B2(_b2), d3(_d3) {
+	D3(int _b1, short _d2 =0, long _b2 =0, float _d3 = 0) : B1(_b1),D2(_b1,_d2), B2(_b2), d3(_d3) {
 		cout << "Викликано конструктор похідного класу D3" << endl;
 	}
 
