@@ -11,7 +11,7 @@ protected:
 public:
 	B2(long _b2 = 0) : b2(_b2) { cout << "Викликано конструктор базового класу B2" << endl; }
 
-	virtual void Show() {
+	virtual void Print() {
 		cout << setw(18) << b2 << " |";
 	}
 

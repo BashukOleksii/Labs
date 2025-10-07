@@ -9,7 +9,7 @@ protected:
 public:
 	D1(int _b1 = 0, double _d1 = 0) : B1(_b1), d1(_d1) { cout << "Викликано конструктор похідного класу D1" << endl; }
 
-	void Show() override {
+	void Print() override {
 		cout << setw(18) << d1 << " |";
 	}
 

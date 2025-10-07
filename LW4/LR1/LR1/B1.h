@@ -12,7 +12,7 @@ protected:
 public :
 	B1(int _b1 = 0) : b1(_b1) { cout << "Викликано консруктор класу B1" << endl; }
 	
-	virtual void Show() {
+	virtual void Print() {
 		cout << setw(18) << b1 << " |";
 	}
 

@@ -12,9 +12,9 @@ public:
 		cout << "Викликано конструктор похідного класу D3" << endl;
 	}
 
-	void Show()override {
-		D2::Show();
-		B2::Show();
+	void Print()override {
+		D2::Print();
+		B2::Print();
 		cout << setw(18) << d3 << " |";
 	}
 

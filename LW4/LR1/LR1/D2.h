@@ -10,7 +10,7 @@ public:
 		cout << "Викликано конструкор похідного класу D2" << endl;;
 	}
 
-	void Show() override {
+	void Print() override {
 		cout << setw(18) << d2 << " |";
 	}
 	
