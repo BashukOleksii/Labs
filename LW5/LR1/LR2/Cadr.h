@@ -26,7 +26,7 @@ public:
 	virtual void Print();
 
 
-
+	static void Shapka();
 
 	virtual double GetSalary() = 0;
 
@@ -64,9 +64,6 @@ public:
 
 protected:
 	void NormalNum(int& num);
-
-	void PrintFatLine(bool endl);
-	
-
+	static void PrintLine();
 };
 

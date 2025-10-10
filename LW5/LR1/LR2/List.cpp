@@ -49,6 +49,8 @@
 				return;
 
 			Node* c = head;
+			
+			Cadr::Shapka();
 
 			while (c) {
 				c->people->Print();
@@ -83,6 +85,8 @@
 
 			Node* c = head;
 
+			Cadr::Shapka();
+
 			while (c)
 			{
 				if (c->people->CompareName(name))
@@ -95,5 +99,4 @@
 		{
 			while (head)
 				Delete();
-
 		}

@@ -50,10 +50,12 @@ public:
 	void Print() override {
 		
 		Cadr::Print();
-		Cadr::record.ShortLine(false); cout << " Інформація про Engieer "; Cadr::record.ShortLine(true);
-		cout << setw(30) << "Спеціалізація" << setw(30) << GetSpecialization() << endl;
-		cout << setw(30) << "Кількість виконаних проектів"<< setw(30) << GetCountProject() << endl;
-		PrintFatLine(false); PrintFatLine(false); PrintFatLine(true);
+
+		cout << setw(5) << "|" << setw(8) << "|";
+		cout << setw(13) << GetSpecialization() << " |" << setw(6) << GetCountProject() << " |";
+		cout << setw(15) << "|" << endl;
+
+		Cadr::PrintLine();
 	}
 
 
@@ -65,6 +67,9 @@ public:
 	void SetSpecialization() {
 		cout << "Введiть спецiалiзацiю: "; getline(cin, specialization);
 	}
+
+
+
 
 	Engineer& operator++() override {
 		countProject++;

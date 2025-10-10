@@ -28,6 +28,8 @@ public:
 		cout <<setw(20)<< "Департамент: " << name<<endl;
 		cout << "==================================================================" << endl;
 
+		Cadr::Shapka();
+
 		for (const auto& emp : employees) 
 			emp->Print();
 	}
@@ -54,27 +56,30 @@ public:
 
 		int count = 0;
 
-		for (auto it = employees.begin(); it != employees.end(); it++) {
-
-			if ((*it) != nullptr && (*it)->CompareName(name)) {
-				(*it)->Print();
+		for (auto it = employees.begin(); it != employees.end(); it++) 
+			if ((*it) != nullptr && (*it)->CompareName(name)) 
 				count++;
-			}
+			
+		if (!count) {
+			cout << "Робітників із вказаним ім'ям не знайдено" << endl;
+			return;
 		}
 
-		if (!count)
-			cout << "Робітників із вказаним ім'ям не знайдено" << endl;
+		Cadr::Shapka();
+		for (auto it = employees.begin(); it != employees.end(); it++)
+			if ((*it) != nullptr && (*it)->CompareName(name))
+				(*it)->Print();
 
 
 	}
 
 	void Reform() {
 		employees.clear();
-		cout << "Відділ " << name << " розформовано" << endl;
+		cout << "Відділ \"" << name << "\" розформовано" << endl;
 	}
 
 	void SetName() {
-		cout << "Введіть назву відділення"; getline(cin, name);
+		cout << "Введіть назву віділу"; getline(cin, name);
 	}
 
 	string GetName() {

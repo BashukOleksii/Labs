@@ -23,10 +23,11 @@ public:
 
 		Cadr::Print();
 
-		Cadr::record.ShortLine(false); cout << " Інформація про Worker "; Cadr::record.ShortLine(true);
-		cout << setw(30) << "Розряд" << setw(30) << GetDischarge() << endl;
-		cout << setw(30) << "Кількість виконаних завдань" << setw(30) << GetProductCount() << endl;
-		PrintFatLine(false); PrintFatLine(false); PrintFatLine(true);
+		cout << setw(3) <<  GetDischarge() <<  " |" << setw(6) << GetProductCount() << " |";
+		cout << setw(15) << "|" << setw(8) << "|";
+		cout << setw(15) << "|" << endl;
+
+		Cadr::PrintLine();
 	}
 
 

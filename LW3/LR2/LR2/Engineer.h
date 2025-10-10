@@ -50,9 +50,10 @@ public:
 	void Print() override {
 		
 		Cadr::Print();
-		cout << setw(15) << "|" << setw(10) << "|";
-		cout << setw(13) << GetSpecialization() << " |" << setw(8) << GetCountProject() << " |";
-		cout << setw(15) << "|"  << endl;
+		
+		cout << setw(5) << "|" << setw(8) << "|";
+		cout << setw(13) << GetSpecialization() <<" |" << setw(6) << GetCountProject() << " |";
+		cout << setw(15) << "|"<< endl;
 
 		Cadr::PrintLine();
 	}

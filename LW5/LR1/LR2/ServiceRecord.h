@@ -29,11 +29,7 @@
 
 
 		void Print() {
-			ShortLine(false); cout << " Запис  про  працівника "; ShortLine(true);
-			cout << setw(30) << "Ідентифікаційний номер" << setw(30)<< GetId() << endl;
-			cout << setw(30) << "Статус працівника" << setw(30) << GetStatus() << endl;;
-			cout << setw(30) << "Рік найму на роботу" << setw(30) << GetHireYear() << endl;
-			cout << setw(30) << "Головна діяльність" << setw(30) << GetPrimarySkill() << endl;
+			cout << setw(2) << GetId() << " |" << setw(12) << GetStatus() << " |" << setw(3) << GetHireYear() << " |" << setw(28) << GetPrimarySkill() << " |";
 		}
 
 		void Init() {
@@ -83,13 +79,6 @@
 		}
 		void SetPrimarySkill() {
 			cout << "Введіть головний напрям роботи: "; getline(cin, primarySkill);
-		}
-		void ShortLine(bool endl) {
-			for (int i = 0; i < 25; i++)
-				cout << "-";
-
-			if (endl)
-				cout << "\n";
 		}
 
 

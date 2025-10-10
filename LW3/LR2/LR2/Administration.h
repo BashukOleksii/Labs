@@ -42,9 +42,9 @@ public:
 
 	void Print() override {
 		Cadr::Print();
-		cout << setw(15) << "|" << setw(10) << "|";
-		cout << setw(15) << "|" << setw(10) << "|";
-		cout << setw(13) << GetPosition() << " |" << setw(10) << GetPeopleCount() << endl;
+		cout << setw(5) << "|" << setw(8) << "|";
+		cout << setw(15) << "|" << setw(8) << "|";
+		cout << setw(13) << GetPosition() <<  " |" << setw(8) << GetPeopleCount() << endl;
 
 		Cadr::PrintLine();
 	}

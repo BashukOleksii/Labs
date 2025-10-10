@@ -11,8 +11,10 @@ int main() {
 
 	cout << "Створення об'єктів абстрактного класу за допомогою конструктора та виведення: " << endl;
 	Cadr* worker = new Worker("Ернест",2020,"Ремонт електроніки","Професійна",10,1);
-	Cadr* engineer = new Engineer("Тарас", 2010,"Налаштування електроніки", "Вища", "Електроніка", 50);
+	Cadr* engineer = new Engineer("Тарас", 2010, "Вища","Налаштування електроніки",  "Електроніка", 50);
 	Cadr* administration = new Administration("Євген",2025,"Управління працівниками","Вища","Керуючий",10);
+
+	Cadr::Shapka();
 
 		worker->Print();
 		engineer->Print();
@@ -64,6 +66,5 @@ int main() {
 	Department dep1("Фінанси");
 	dep1.Add(worker);
 	dep1.Print();
-
 	dep.Reform();
 }

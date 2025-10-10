@@ -1,0 +1,27 @@
+Ім'я - 20
+Освіта -20
+Id - 3
+Status - 10
+Year - 5
+primarySkill - 30
+
+Rozr - 5
+CountW - 6
+
+Spec - 15
+CountP - 6
+
+
+pos- 15
+CountH - 3
+
+
+cout << setw(20) << "Name |" << setw(20) << "Education |";
+	cout << setw(4) << "Id |" << setw(10) << "Status |" << setw(5) << "Year |" << setw(30) << "PrimarySkill | ";
+
+	cout << setw(5) << "Rozr |" << setw(8) << "CountW |";
+
+	cout << setw(15) << "Spec |" << setw(8) << "CountP |";
+	
+	cout << setw(15) << "Position |" << setw(8) << "CountH" << endl;
+

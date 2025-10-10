@@ -23,11 +23,21 @@ void Cadr::Init() {
 		SetEducation();
 }
 
+void Cadr::Shapka() {
+
+	PrintLine();
+
+	cout << setw(16) << "Name |" << setw(20) << "Education |";
+	cout << setw(4) << "Id |" << setw(14) << "Status |" << setw(5) << "Year |" << setw(30) << "PrimarySkill |";
+	cout << setw(5) << "R |" << setw(8) << "CountW |";
+	cout << setw(15) << "Spec |" << setw(8) << "CountP |";
+	cout << setw(15) << "Position |" << setw(7) << "CountH" << endl;
+
+	PrintLine();
+}
+
 void Cadr::Print() {
-	cout << endl << endl << endl;
-	PrintFatLine(false); cout << " ²ÍÔÎÐÌÀÖ²ß ÏÐÎ ÐÎÁ²ÒÍÈÊÀ "; PrintFatLine(true);
-	cout << setw(30) << "²ì'ÿ" << setw(30) << GetName() << endl;
-	cout << setw(30) << "Îñâ³òà" << setw(30) << GetEducation() << endl;
+	cout << setw(14) << GetName() << " |" << setw(18) <<  GetEducation() << " |";
 	record.Print();
 }
 
@@ -70,13 +80,11 @@ void Cadr::NormalNum(int& num) {
 	}
 }
 
-void Cadr::PrintFatLine(bool endl)
+void Cadr::PrintLine()
 {
-	for (int i = 0; i < 25; i++)
-		cout << "=";
-
-	if (endl)
-		cout << "\n";
+	for (int i = 0; i < 148; i++)
+		cout << "-";
+	cout << endl;
 }
 
 

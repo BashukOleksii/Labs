@@ -42,10 +42,11 @@ public:
 
 	void Print() override {
 		Cadr::Print();
-		Cadr::record.ShortLine(false); cout << " Інформація про Administration "; Cadr::record.ShortLine(true);
-		cout << setw(30) << "Посада" << setw(30) << GetPosition() << endl;
-		cout << setw(30) << "Кількість робітників" << setw(30)<< GetPeopleCount() << endl;
-		PrintFatLine(false); PrintFatLine(false); PrintFatLine(true);
+		cout << setw(5) << "|" << setw(8) << "|";
+		cout << setw(15) << "|" << setw(8) << "|";
+		cout << setw(13) << GetPosition() << " |" << setw(7) << GetPeopleCount() << endl;
+
+		Cadr::PrintLine();
 	}
 
 	void Init() override {

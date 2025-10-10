@@ -18,10 +18,14 @@ void Cadr::Add() {
 }
 
 void Cadr::Shapka() {
-	cout << setw(15) << "Iм'я |" << setw(10) << "Вступ |" << setw(15) << "Освiта |";
-	cout << setw(15) << "Продукцiї |" << setw(10) << "Розряд |";
-	cout << setw(15) << "Спецiалiзацiя |" << setw(10) << "Проєктiв |";
-	cout << setw(15) << "Посада |" << setw(10) << "Пiдданих" << endl;
+	cout << setw(20) << "Name |" << setw(20) << "Education |";
+	cout << setw(4) << "Id |" << setw(10) << "Status |" << setw(5) << "Year |" << setw(30) << "PrimarySkill | ";
+
+	cout << setw(5) << "Rozr |" << setw(8) << "CountW |";
+
+	cout << setw(15) << "Spec |" << setw(8) << "CountP |";
+	
+	cout << setw(15) << "Position |" << setw(8) << "CountH" << endl;
 
 	PrintLine();
 }
