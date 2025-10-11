@@ -219,9 +219,7 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -245,6 +243,9 @@
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1482,6 +1483,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.checkBox24);
+            this.panel1.Controls.Add(this.textBox24);
+            this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.checkBox23);
             this.panel1.Controls.Add(this.comboBox24);
             this.panel1.Controls.Add(this.label63);
@@ -1605,7 +1609,7 @@
             // 
             this.checkBox15.AutoSize = true;
             this.checkBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox15.Location = new System.Drawing.Point(380, 244);
+            this.checkBox15.Location = new System.Drawing.Point(378, 244);
             this.checkBox15.Name = "checkBox15";
             this.checkBox15.Size = new System.Drawing.Size(15, 14);
             this.checkBox15.TabIndex = 63;
@@ -1625,7 +1629,7 @@
             // 
             this.checkBox13.AutoSize = true;
             this.checkBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox13.Location = new System.Drawing.Point(374, 189);
+            this.checkBox13.Location = new System.Drawing.Point(179, 190);
             this.checkBox13.Name = "checkBox13";
             this.checkBox13.Size = new System.Drawing.Size(15, 14);
             this.checkBox13.TabIndex = 61;
@@ -1684,7 +1688,7 @@
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox21.Location = new System.Drawing.Point(2, 184);
             this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(358, 26);
+            this.textBox21.Size = new System.Drawing.Size(171, 26);
             this.textBox21.TabIndex = 50;
             // 
             // textBox22
@@ -2259,9 +2263,7 @@
             this.mainAdd.Controls.Add(this.textBox12);
             this.mainAdd.Controls.Add(this.textBox11);
             this.mainAdd.Controls.Add(this.textBox8);
-            this.mainAdd.Controls.Add(this.comboBox11);
             this.mainAdd.Controls.Add(this.label33);
-            this.mainAdd.Controls.Add(this.label20);
             this.mainAdd.Controls.Add(this.label22);
             this.mainAdd.Controls.Add(this.label21);
             this.mainAdd.Controls.Add(this.label19);
@@ -2310,9 +2312,9 @@
             // textBox23
             // 
             this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox23.Location = new System.Drawing.Point(198, 258);
+            this.textBox23.Location = new System.Drawing.Point(4, 258);
             this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(199, 26);
+            this.textBox23.Size = new System.Drawing.Size(393, 26);
             this.textBox23.TabIndex = 25;
             this.textBox23.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox23_KeyPress);
             // 
@@ -2342,42 +2344,15 @@
             this.textBox8.Size = new System.Drawing.Size(255, 26);
             this.textBox8.TabIndex = 16;
             // 
-            // comboBox11
-            // 
-            this.comboBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox11.Items.AddRange(new object[] {
-            "A+++",
-            "A++",
-            "A+",
-            "A",
-            "B",
-            "C",
-            "D"});
-            this.comboBox11.Location = new System.Drawing.Point(3, 257);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(185, 28);
-            this.comboBox11.TabIndex = 27;
-            this.comboBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox11_KeyPress);
-            // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(194, 234);
+            this.label33.Location = new System.Drawing.Point(5, 233);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(86, 20);
             this.label33.TabIndex = 26;
             this.label33.Text = "Потужнісь";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(5, 234);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(183, 20);
-            this.label20.TabIndex = 20;
-            this.label20.Text = "Тип енергоспоживання";
             // 
             // label22
             // 
@@ -2587,8 +2562,7 @@
             this.toolStripComboBox1.Items.AddRange(new object[] {
             "Мікрохвильовка",
             "Пральна машина",
-            "Пилосос",
-            "a"});
+            "Пилосос"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
             this.toolStripComboBox1.Text = "Тип";
@@ -2609,6 +2583,34 @@
             this.tabControl2.Size = new System.Drawing.Size(417, 473);
             this.tabControl2.TabIndex = 4;
             this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabControl2_TabIndexChanged);
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 21F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox24.Location = new System.Drawing.Point(376, 190);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(15, 14);
+            this.checkBox24.TabIndex = 77;
+            this.checkBox24.UseVisualStyleBackColor = true;
+            // 
+            // textBox24
+            // 
+            this.textBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox24.Location = new System.Drawing.Point(199, 184);
+            this.textBox24.Name = "textBox24";
+            this.textBox24.Size = new System.Drawing.Size(171, 26);
+            this.textBox24.TabIndex = 75;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.Location = new System.Drawing.Point(201, 161);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 20);
+            this.label20.TabIndex = 76;
+            this.label20.Text = "ID-PU";
             // 
             // Form1
             // 
@@ -2795,9 +2797,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ComboBox comboBox11;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
@@ -2900,6 +2900,9 @@
         private System.Windows.Forms.CheckBox checkBox11;
         public System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.CheckBox checkBox24;
+        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.Label label20;
     }
 }
 

@@ -1,17 +1,7 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LabRob1
 {
@@ -28,32 +18,28 @@ namespace LabRob1
 
         public double Price { get; set; }
         public short Year { get; set; }
-
-        public string EnergyClass { get; set; }
-        public short Power { get; set; }
         public double EnergyCost { get; private set; }
-
         public ManufactureApp Manufacture { get; set; }
-
+        public PowerUnit PUnit { get; private set; }
         private void CalculateCost()
         {
-            EnergyCost = (double)Power * priceKW/1000;
-        }
+            EnergyCost = (double)PUnit.Power * priceKW/1000;
+        }   
 
         #endregion
 
         #region Конструктори
 
-        public Appliances(): this(id.ToString(),"Ім'я " + id,0, 0, "No",0, new ManufactureApp()) { }
+        public Appliances(): this(id.ToString(),"Ім'я " + id,0,0,0, new ManufactureApp()) { }
 
-        public Appliances(string Id, string Name, double Price, short Year, string EnergyClass, short Power, ManufactureApp Manufacture)
+        public Appliances(string Id, string Name, double Price, short Year,short Power, ManufactureApp Manufacture)
         {
             this.Id = Id;
             this.Name = Name;
             this.Price = Price;
             this.Year = Year;
-            this.EnergyClass = EnergyClass;
-            this.Power = Power;
+            
+            PUnit = new PowerUnit(this.Id,Power);
 
             this.Manufacture = Manufacture;
 
@@ -67,10 +53,8 @@ namespace LabRob1
             this.Name = other.Name;
             this.Price = other.Price;
             this.Year = other.Year;
-            this.EnergyClass = other.EnergyClass;
-            this.Power = other.Power;
+            this.PUnit = other.PUnit;
             this.EnergyCost = other.EnergyCost;
-
             this.Manufacture = other.Manufacture;
         }
 
@@ -202,9 +186,13 @@ namespace LabRob1
             writer.Write(Name);
             writer.Write(Price);
             writer.Write(Year);
-            writer.Write(EnergyClass);
-            writer.Write(Power);
+
+            writer.Write(PUnit.Id);
+            writer.Write(PUnit.EnergyClass);
+            writer.Write(PUnit.Power);
+
             writer.Write(EnergyCost);
+
             writer.Write(Manufacture.Name);
             writer.Write(Manufacture.Country);
         }
@@ -215,9 +203,13 @@ namespace LabRob1
             Name = reader.ReadString();
             Price = reader.ReadDouble();
             Year = reader.ReadInt16();
-            EnergyClass = reader.ReadString();
-            Power = reader.ReadInt16();
+
+            PUnit.Id = reader.ReadString();
+            PUnit.EnergyClass = reader.ReadString();
+            PUnit.Power = reader.ReadInt16();
+
             EnergyCost = reader.ReadDouble();
+
             Manufacture.Name = reader.ReadString();
             Manufacture.Country = reader.ReadString();
         }
@@ -228,8 +220,9 @@ namespace LabRob1
             row["Ім'я"] = Name;
             row["Ціна"] = Price;
             row["Рік випуску"] = Year;
-            row["Тип спожвання"] = EnergyClass;
-            row["Потужність"] = Power;
+            row["Id - блоку живлення"] = PUnit.Id;
+            row["Тип спожвання"] = PUnit.EnergyClass;
+            row["Потужність"] = PUnit.Power;
             row["Витратність (на год.)"] = EnergyCost;
             row["Виробник"] = Manufacture.Name;
             row["Країна-виробник"] = Manufacture.Country;
@@ -243,8 +236,8 @@ namespace LabRob1
             form.textBox9.Text = Manufacture.Country;
             form.textBox16.Text = Price.ToString();
             form.textBox15.Text = Year.ToString();
-            form.comboBox12.Text = EnergyClass;
-            form. textBox14.Text = Power.ToString();
+            form.comboBox12.Text = PUnit.EnergyClass;
+            form. textBox14.Text = PUnit.Power.ToString();
             form.pCleaner.Visible = false;
             form.pWashingMashine.Visible = false;
             form.pMicrowave.Visible = false;

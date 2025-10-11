@@ -53,60 +53,65 @@ namespace LabRob1
 
 
             #region FindSetting
-            //dt.Columns.Add("ID", typeof(string));
-            //dt.Columns.Add("Ім'я", typeof(string));
 
-            //dt.Columns.Add("Ціна", typeof(double));
-            //dt.Columns.Add("Рік випуску", typeof(short));
-            //dt.Columns.Add("Тип спожвання", typeof(string));
-            //dt.Columns.Add("Потужність", typeof(short));
-            //dt.Columns.Add("Витратність (на год.)", typeof(double));
 
-            //dt.Columns.Add("Виробник", typeof(string));
-            //dt.Columns.Add("Країна-виробник", typeof(string));
-
-            //dt.Columns.Add("Діаметр тарілки", typeof(double));
-            //dt.Columns.Add("Наявність грилю", typeof(string));
-
-            //dt.Columns.Add("Обертів на хвилину", typeof(short));
-            //dt.Columns.Add("Максимальна вага", typeof(double));
-
-            //dt.Columns.Add("Тип пилососу", typeof(string));
-            //dt.Columns.Add("Наявність щітки", typeof(string));
-
-            chk = new CheckBox[] { 
+            chk = new CheckBox[] {
                 checkBox9, // 1 - Id 
                 checkBox10, // 2 - Name
                 checkBox12, // 3 - Pricw
                 checkBox13, // 4 - Year
-                checkBox14, // 5 - EnergyClass
-                checkBox15, // 6 - Power
-                checkBox22, // 7 - EnergyCost
-                checkBox11,  // 8 - Name
-                checkBox23, // 9 - Contry
-                checkBox20, // 10 - Діаметр
-                checkBox21, // 11 - Гриль
-                checkBox18, // 12 - Оберти
-                checkBox19, // 13 - Вага
-                checkBox16, // 14 -Тип
-                checkBox17 // 15 - Щітка
+                checkBox24, // 5 - IDPU
+                checkBox14, // 6 - EnergyClass
+                checkBox15, // 7 - Power
+                checkBox22, // 8 - EnergyCost
+                checkBox11,  // 9 - Name
+                checkBox23, // 10 - Contry
+                checkBox20, // 11 - Діаметр
+                checkBox21, // 12 - Гриль
+                checkBox18, // 13 - Оберти
+                checkBox19, // 14 - Вага
+                checkBox16, // 15 -Тип
+                checkBox17 // 16 - Щітка
             };
+            //dt.Columns.Add("ID", typeof(string)); - 1 
+            //dt.Columns.Add("Ім'я", typeof(string)); - 2
+
+            //dt.Columns.Add("Ціна", typeof(double)); - 3
+            //dt.Columns.Add("Рік випуску", typeof(short)); - 4
+
+            //dt.Columns.Add("Id - блоку живлення", typeof(string)); - 5
+            //dt.Columns.Add("Тип спожвання", typeof(string)); - 6
+            //dt.Columns.Add("Потужність", typeof(short)); - 7
+
+            //dt.Columns.Add("Витратність (на год.)", typeof(double)); - 8
+
+            //dt.Columns.Add("Виробник", typeof(string)); - 9
+            //dt.Columns.Add("Країна-виробник", typeof(string)); - 10
+
+            //dt.Columns.Add("Діаметр тарілки", typeof(double)); - 11
+            //dt.Columns.Add("Наявність грилю", typeof(string)); - 12
+            //dt.Columns.Add("Обертів на хвилину", typeof(short)); - 13
+            //dt.Columns.Add("Максимальна вага", typeof(double)); - 14
+            //dt.Columns.Add("Тип пилососу", typeof(string)); - 15
+            //dt.Columns.Add("Наявність щітки", typeof(string)); - 16
+
             textBoxes = new Control[] { 
                 textBox19, // 1 - Id
                 textBox25, // 2 - Name
                 textBox22, // 3 - Price
                 textBox21, // 4 - Year
-                comboBox13, // 5 - EnergyClass
-                textBox20, // 6 - Power
-                textBox43, // 7 - EnergyCost
-                comboBox23, // 8 - Name
-                comboBox24, // 9 - Country
-                textBox38, // 10 - Діаметр
-                comboBox17, // 11 - Гриль
-                textBox37, // 12 - Оберти
-                textBox36, // 13 - Вага
-                comboBox21, // 14 -Тип
-                comboBox16 // 15 - Щітка
+                textBox24, // 5 - IDPU
+                comboBox13, // 6 - EnergyClass
+                textBox20, // 7 - Power
+                textBox43, // 8 - EnergyCost
+                comboBox23, // 9 - Name
+                comboBox24, // 10 - Country
+                textBox38, // 11 - Діаметр
+                comboBox17, // 12 - Гриль
+                textBox37, // 13 - Оберти
+                textBox36, // 14 - Вага
+                comboBox21, // 15 -Тип
+                comboBox16 // 16 - Щітка
             };
 
             #endregion
@@ -125,22 +130,22 @@ namespace LabRob1
                 return;
 
 
-            if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(comboBox22) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23) || IsEmpty(comboBox11))
+            if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(comboBox22) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23))
                  return;
             if(ind == 0)
             {
                 if (IsEmpty(textBox31) || IsEmpty(comboBox14))
                     return;
                 list.Add(new Microwave(textBox10.Text, textBox8.Text, double.Parse(textBox11.Text), 
-                    short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text),
+                    short.Parse(textBox12.Text), short.Parse(textBox23.Text),
                     double.Parse(textBox31.Text),comboBox14.Text,manufactureService.GetManufacture(comboBox22.Text)));
             }
             else if (ind == 2)
             {
                 if (IsEmpty(comboBox20) || IsEmpty(comboBox15))
                     return;
-                list.Add(new Cleaner(textBox10.Text, textBox8.Text, 
-                    double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, 
+                list.Add(new Cleaner(textBox10.Text, textBox8.Text,
+                    double.Parse(textBox11.Text), short.Parse(textBox12.Text),
                     short.Parse(textBox23.Text), comboBox20.Text, comboBox15.Text, manufactureService.GetManufacture(comboBox22.Text)));
             }
             else if (ind == 1)
@@ -148,7 +153,7 @@ namespace LabRob1
                 if (IsEmpty(textBox33) || IsEmpty(textBox34))
                     return;
                 list.Add(new WashingMashine(textBox10.Text, textBox8.Text, double.Parse(textBox11.Text), 
-                    short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text), 
+                    short.Parse(textBox12.Text), short.Parse(textBox23.Text), 
                     short.Parse(textBox33.Text), double.Parse(textBox34.Text), manufactureService.GetManufacture(comboBox22.Text)));
             }
         }
@@ -351,8 +356,10 @@ namespace LabRob1
 
             dt.Columns.Add("Ціна", typeof(double));
             dt.Columns.Add("Рік випуску", typeof(short));
+            dt.Columns.Add("Id - блоку живлення", typeof(string));
             dt.Columns.Add("Тип спожвання", typeof(string));
             dt.Columns.Add("Потужність", typeof(short));
+           
             dt.Columns.Add("Витратність (на год.)", typeof(double));
 
             dt.Columns.Add("Виробник", typeof(string));
@@ -810,8 +817,16 @@ namespace LabRob1
 
             string text = tabControl.SelectedTab.Text;
 
-            if (text == "Пошук")
+            if (text == "Пошук" )
+            {
                 smallSize();
+               if(toolStripComboBox2.Text == "Тип")
+                {
+                    comboBox23.DataSource = manufactureService.GetAllManufactures("Name");
+                    comboBox24.DataSource = manufactureService.GetAllManufactures("Country");
+                }
+
+            }
             else
                 bigSize();
 

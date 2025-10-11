@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appliances\PowerUnit.cs" />
     <Compile Include="Appliances\Appliaces.cs" />
     <Compile Include="Services\ApplianceService.cs" />
     <Compile Include="Appliances\Cleaner.cs" />

@@ -41,6 +41,21 @@ namespace LabRob1.Services
             
         }
 
+        public List<string> GetAllManufactures(string field)
+        {
+            List<string> man = new List<string>();
+
+            foreach (ManufactureApp item in manufactures)
+            {
+                if (field == "Name")
+                    man.Add(item.Name);
+                else if (field == "Country") 
+                man.Add(item.Country);
+            }
+            return man.Distinct().ToList();
+
+        }
+
 
     }
 }

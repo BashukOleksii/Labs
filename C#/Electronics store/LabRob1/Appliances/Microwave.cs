@@ -21,8 +21,8 @@ namespace LabRob1
         public Microwave() :base(){ TableDiametr = 0; HasGril = "Ні"; }
 
         public Microwave
-            (string Id, string Name,double Price, short Year, string EnergyClass, short Power, double TableDiametr,string HasGrill,ManufactureApp manufacture) 
-            : base(Id, Name, Price, Year, EnergyClass, Power,manufacture)
+            (string Id, string Name,double Price, short Year, short Power, double TableDiametr,string HasGrill,ManufactureApp manufacture) 
+            : base(Id, Name, Price, Year, Power,manufacture)
         {
             this.TableDiametr = TableDiametr;
             this.HasGril = HasGrill;
