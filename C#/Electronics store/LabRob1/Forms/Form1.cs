@@ -1,8 +1,10 @@
-﻿using System;
+﻿using LabRob1.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
@@ -20,6 +22,7 @@ namespace LabRob1
 
         #region Змінні та конструктор
         ApplianceService applianceService;
+        ManufactureService manufactureService;
         DataTable dt = new DataTable();
         DataTable dt1;
 
@@ -36,6 +39,7 @@ namespace LabRob1
             InitialTable();
 
             applianceService = new ApplianceService();
+            manufactureService = new ManufactureService("DataFiles\\Manufacture.json");
 
             list = new List<Appliances>();
 
@@ -47,8 +51,65 @@ namespace LabRob1
             openFileDialog1.Title = "Відкриття бінарного файлу";
             openFileDialog1.FileName = "Збережений файл";
 
-            chk = new CheckBox[] { checkBox9, checkBox10, checkBox11, checkBox12, checkBox13, checkBox14, checkBox15,checkBox22, checkBox20, checkBox21, checkBox18, checkBox19, checkBox16,checkBox17 };
-            textBoxes = new Control[] { textBox19, textBox25, textBox24, textBox22, textBox21, comboBox13, textBox20,textBox43, textBox38, comboBox17, textBox37, textBox36, comboBox21,comboBox16 };
+
+            #region FindSetting
+            //dt.Columns.Add("ID", typeof(string));
+            //dt.Columns.Add("Ім'я", typeof(string));
+
+            //dt.Columns.Add("Ціна", typeof(double));
+            //dt.Columns.Add("Рік випуску", typeof(short));
+            //dt.Columns.Add("Тип спожвання", typeof(string));
+            //dt.Columns.Add("Потужність", typeof(short));
+            //dt.Columns.Add("Витратність (на год.)", typeof(double));
+
+            //dt.Columns.Add("Виробник", typeof(string));
+            //dt.Columns.Add("Країна-виробник", typeof(string));
+
+            //dt.Columns.Add("Діаметр тарілки", typeof(double));
+            //dt.Columns.Add("Наявність грилю", typeof(string));
+
+            //dt.Columns.Add("Обертів на хвилину", typeof(short));
+            //dt.Columns.Add("Максимальна вага", typeof(double));
+
+            //dt.Columns.Add("Тип пилососу", typeof(string));
+            //dt.Columns.Add("Наявність щітки", typeof(string));
+
+            chk = new CheckBox[] { 
+                checkBox9, // 1 - Id 
+                checkBox10, // 2 - Name
+                checkBox12, // 3 - Pricw
+                checkBox13, // 4 - Year
+                checkBox14, // 5 - EnergyClass
+                checkBox15, // 6 - Power
+                checkBox22, // 7 - EnergyCost
+                checkBox11,  // 8 - Name
+                checkBox23, // 9 - Contry
+                checkBox20, // 10 - Діаметр
+                checkBox21, // 11 - Гриль
+                checkBox18, // 12 - Оберти
+                checkBox19, // 13 - Вага
+                checkBox16, // 14 -Тип
+                checkBox17 // 15 - Щітка
+            };
+            textBoxes = new Control[] { 
+                textBox19, // 1 - Id
+                textBox25, // 2 - Name
+                textBox22, // 3 - Price
+                textBox21, // 4 - Year
+                comboBox13, // 5 - EnergyClass
+                textBox20, // 6 - Power
+                textBox43, // 7 - EnergyCost
+                comboBox23, // 8 - Name
+                comboBox24, // 9 - Country
+                textBox38, // 10 - Діаметр
+                comboBox17, // 11 - Гриль
+                textBox37, // 12 - Оберти
+                textBox36, // 13 - Вага
+                comboBox21, // 14 -Тип
+                comboBox16 // 15 - Щітка
+            };
+
+            #endregion
         }
 
         #endregion
@@ -64,25 +125,31 @@ namespace LabRob1
                 return;
 
 
-            if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(textBox9) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23) || IsEmpty(comboBox11))
+            if (IsEmpty(textBox10) || IsEmpty(textBox8) || IsEmpty(comboBox22) || IsEmpty(textBox11) || IsEmpty(textBox12) || IsEmpty(textBox23) || IsEmpty(comboBox11))
                  return;
             if(ind == 0)
             {
                 if (IsEmpty(textBox31) || IsEmpty(comboBox14))
                     return;
-                list.Add(new Microwave(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text),double.Parse(textBox31.Text),comboBox14.Text));
+                list.Add(new Microwave(textBox10.Text, textBox8.Text, double.Parse(textBox11.Text), 
+                    short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text),
+                    double.Parse(textBox31.Text),comboBox14.Text,manufactureService.GetManufacture(comboBox22.Text)));
             }
             else if (ind == 2)
             {
                 if (IsEmpty(comboBox20) || IsEmpty(comboBox15))
                     return;
-                list.Add(new Cleaner(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text), comboBox20.Text, comboBox15.Text));
+                list.Add(new Cleaner(textBox10.Text, textBox8.Text, 
+                    double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, 
+                    short.Parse(textBox23.Text), comboBox20.Text, comboBox15.Text, manufactureService.GetManufacture(comboBox22.Text)));
             }
             else if (ind == 1)
             {
                 if (IsEmpty(textBox33) || IsEmpty(textBox34))
                     return;
-                list.Add(new WashingMashine(textBox10.Text, textBox8.Text, textBox9.Text, double.Parse(textBox11.Text), short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text), short.Parse(textBox33.Text), double.Parse(textBox34.Text)));
+                list.Add(new WashingMashine(textBox10.Text, textBox8.Text, double.Parse(textBox11.Text), 
+                    short.Parse(textBox12.Text), comboBox11.Text, short.Parse(textBox23.Text), 
+                    short.Parse(textBox33.Text), double.Parse(textBox34.Text), manufactureService.GetManufacture(comboBox22.Text)));
             }
         }
 
@@ -167,7 +234,7 @@ namespace LabRob1
             {
                 int index = row.Index;
                 if (index >= 0 && index < list.Count)
-                    if (MessageBox.Show($"Видаляти {list[index].Name} {list[index].Brand} {list[index].Year}?", "Питання", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show($"Видаляти {list[index].Name} {list[index].Manufacture.ToString()} {list[index].Year}?", "Питання", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         delete.Add(list[index]);
             }
 
@@ -281,12 +348,15 @@ namespace LabRob1
         {
             dt.Columns.Add("ID", typeof(string));
             dt.Columns.Add("Ім'я", typeof(string));
-            dt.Columns.Add("Бренд", typeof(string));
+
             dt.Columns.Add("Ціна", typeof(double));
             dt.Columns.Add("Рік випуску", typeof(short));
             dt.Columns.Add("Тип спожвання", typeof(string));
             dt.Columns.Add("Потужність", typeof(short));
             dt.Columns.Add("Витратність (на год.)", typeof(double));
+
+            dt.Columns.Add("Виробник", typeof(string));
+            dt.Columns.Add("Країна-виробник", typeof(string));
 
             dt.Columns.Add("Діаметр тарілки", typeof(double));
             dt.Columns.Add("Наявність грилю", typeof(string));
@@ -317,6 +387,20 @@ namespace LabRob1
 
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = dt;
+        }
+
+        private void SetComboBox(ComboBox comboBox, string type, string field)
+        {
+            List<string> finded = manufactureService.GetManufactures(type,field);
+
+            if(finded is null)
+            {
+                MessageBox.Show($"Помилка налаштування ComboBox: {comboBox.Name}, не знайдено типу: {type}", 
+                    "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            comboBox.DataSource = finded;
         }
 
         #endregion
@@ -621,6 +705,8 @@ namespace LabRob1
                 Cleaner.Visible = false;
                 WashingMashine.Visible = true;
             }
+
+            SetComboBox(comboBox22,toolStripComboBox1.Text,"Name");
         }
 
         private void toolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -656,6 +742,10 @@ namespace LabRob1
                 checkBox20.Checked = false;
                 checkBox21.Checked = false;
             }
+
+            SetComboBox(comboBox23, toolStripComboBox2.Text, "Name");
+            SetComboBox(comboBox24, toolStripComboBox2.Text, "Country");
+
         }
 
 
@@ -732,6 +822,8 @@ namespace LabRob1
 
 
         #endregion
+
+        
     }
 
 }

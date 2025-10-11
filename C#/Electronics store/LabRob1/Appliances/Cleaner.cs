@@ -21,7 +21,9 @@ namespace LabRob1
         #region Конструктори
 
         public Cleaner() : base() { Type = "None"; HasBrush = "Ні"; }
-        public Cleaner(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power, string Type, string HasBrush) : base(Id, Name, Brand, Price, Year, EnergyClass, Power)
+        public Cleaner
+            (string Id, string Name, double Price, short Year, string EnergyClass, short Power, string Type, string HasBrush, ManufactureApp manufacture) 
+            : base(Id, Name, Price, Year, EnergyClass, Power,manufacture)
         {
             this.Type = Type;
             this.HasBrush = HasBrush;

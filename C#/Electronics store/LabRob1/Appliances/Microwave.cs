@@ -20,7 +20,9 @@ namespace LabRob1
         #region Конструктори
         public Microwave() :base(){ TableDiametr = 0; HasGril = "Ні"; }
 
-        public Microwave(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power, double TableDiametr,string HasGrill) : base(Id, Name, Brand, Price, Year, EnergyClass, Power)
+        public Microwave
+            (string Id, string Name,double Price, short Year, string EnergyClass, short Power, double TableDiametr,string HasGrill,ManufactureApp manufacture) 
+            : base(Id, Name, Price, Year, EnergyClass, Power,manufacture)
         {
             this.TableDiametr = TableDiametr;
             this.HasGril = HasGrill;

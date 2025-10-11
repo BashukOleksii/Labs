@@ -25,7 +25,6 @@ namespace LabRob1
 
         public string Id { get; private set; }
         public string Name { get; set; }
-        public string Brand { get; set; }
 
         public double Price { get; set; }
         public short Year { get; set; }
@@ -33,6 +32,8 @@ namespace LabRob1
         public string EnergyClass { get; set; }
         public short Power { get; set; }
         public double EnergyCost { get; private set; }
+
+        public ManufactureApp Manufacture { get; set; }
 
         private void CalculateCost()
         {
@@ -43,17 +44,18 @@ namespace LabRob1
 
         #region Конструктори
 
-        public Appliances(): this(id.ToString(),"Ім'я " + id, "Бренд " + id, 0, 0, "No",0) { }
+        public Appliances(): this(id.ToString(),"Ім'я " + id,0, 0, "No",0, new ManufactureApp()) { }
 
-        public Appliances(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power)
+        public Appliances(string Id, string Name, double Price, short Year, string EnergyClass, short Power, ManufactureApp Manufacture)
         {
             this.Id = Id;
             this.Name = Name;
-            this.Brand = Brand;
             this.Price = Price;
             this.Year = Year;
             this.EnergyClass = EnergyClass;
             this.Power = Power;
+
+            this.Manufacture = Manufacture;
 
             id++;
             CalculateCost();
@@ -63,12 +65,13 @@ namespace LabRob1
         {
             this.Id = other.Id;
             this.Name = other.Name;
-            this.Brand = other.Brand;
             this.Price = other.Price;
             this.Year = other.Year;
             this.EnergyClass = other.EnergyClass;
             this.Power = other.Power;
             this.EnergyCost = other.EnergyCost;
+
+            this.Manufacture = other.Manufacture;
         }
 
         #endregion
@@ -155,7 +158,7 @@ namespace LabRob1
         }
         public static  implicit operator string(Appliances a)
         {
-            return a.Name + " " + a.Brand;
+            return a.Name + " " + a.Manufacture.ToString();
         }
 
         // Перевантаження операторів порівняння:
@@ -197,44 +200,47 @@ namespace LabRob1
         {
             writer.Write(Id);
             writer.Write(Name);
-            writer.Write(Brand);
             writer.Write(Price);
             writer.Write(Year);
             writer.Write(EnergyClass);
             writer.Write(Power);
             writer.Write(EnergyCost);
+            writer.Write(Manufacture.Name);
+            writer.Write(Manufacture.Country);
         }
 
         public virtual void ReadFromFile(BinaryReader reader)
         {
             Id = reader.ReadString();
             Name = reader.ReadString();
-            Brand = reader.ReadString();
             Price = reader.ReadDouble();
             Year = reader.ReadInt16();
             EnergyClass = reader.ReadString();
             Power = reader.ReadInt16();
             EnergyCost = reader.ReadDouble();
-
+            Manufacture.Name = reader.ReadString();
+            Manufacture.Country = reader.ReadString();
         }
 
         public virtual void FillDataRow(DataRow row)
         {
             row["ID"] = Id;
             row["Ім'я"] = Name;
-            row["Бренд"] = Brand;
             row["Ціна"] = Price;
             row["Рік випуску"] = Year;
             row["Тип спожвання"] = EnergyClass;
             row["Потужність"] = Power;
             row["Витратність (на год.)"] = EnergyCost;
+            row["Виробник"] = Manufacture.Name;
+            row["Країна-виробник"] = Manufacture.Country;
         }
        
         public virtual void ImagesWhenDelete(Form1 form)
         {
             form.textBox13.Text = Id;
             form.textBox18.Text = Name;
-            form.textBox17.Text = Brand;
+            form.textBox17.Text = Manufacture.Name;
+            form.textBox9.Text = Manufacture.Country;
             form.textBox16.Text = Price.ToString();
             form.textBox15.Text = Year.ToString();
             form.comboBox12.Text = EnergyClass;

@@ -1,0 +1,29 @@
+{
+  [
+    {
+      "Name": "Samsung",
+      "Country": "Korea",
+      "Types": [ "Мікрохвильовка", "Пральна машина", "Пилосос" ]
+    },
+    {
+      "Name": "LG",
+      "Country": "Korea",
+      "Types": [ "Мікрохвильовка", "Пральна машина", "Пилосос" ]
+    },
+    {
+      "Name": "Bosh",
+      "Country": "Germany",
+      "Types": [ "Пральна машина", "Пилосос" ]
+    },
+    {
+      "Name": "Beko",
+      "Country": "Turkey",
+      "Types": [ "Мікрохвильовка", "Пральна машина" ]
+    },
+    {
+      "Name": "Karcher",
+      "Country": "Germany",
+      "Types": [ "Пилосос" ]
+    }
+  ]
+}

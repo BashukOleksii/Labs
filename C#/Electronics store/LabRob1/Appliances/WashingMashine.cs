@@ -19,7 +19,9 @@ namespace LabRob1
         #endregion
 
         #region Конструктори
-        public WashingMashine(string Id, string Name, string Brand, double Price, short Year, string EnergyClass, short Power, short SpinSpeed, double MaxKgLoad) : base(Id, Name, Brand, Price, Year, EnergyClass, Power)
+        public WashingMashine
+            (string Id, string Name, double Price, short Year, string EnergyClass, short Power, short SpinSpeed, double MaxKgLoad,ManufactureApp manufacture) 
+            : base(Id, Name, Price, Year, EnergyClass, Power, manufacture)
         {
             this.SpinSpeed = SpinSpeed;
             this.MaxKgLoad = MaxKgLoad;
