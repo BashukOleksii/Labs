@@ -9,7 +9,7 @@ namespace LabRob1
 {
     public interface IAppliance
     {
-         void Discount();
+         void   Discount();
 
          Appliances Clone();
     }

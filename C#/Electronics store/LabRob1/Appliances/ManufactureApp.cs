@@ -23,7 +23,7 @@ namespace LabRob1
         }
         public override string ToString()
         {
-            return $"Бренд:{Name}, Країна:{Country}";
+            return $"Бренд:{Name}, Країна:  {Country}";
         }
     }
 }
